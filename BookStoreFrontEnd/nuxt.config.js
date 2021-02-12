@@ -2,6 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  // mode: 'spa',
   head: {
     titleTemplate: '%s - BookStoreFrontEnd',
     title: 'BookStoreFrontEnd',
@@ -35,6 +36,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/composition-api'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -44,7 +46,7 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
-    theme: {
+   /*  theme: {
       dark: true,
       themes: {
         dark: {
@@ -57,7 +59,7 @@ export default {
           success: colors.green.accent3
         }
       }
-    }
+    } */
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
