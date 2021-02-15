@@ -8,14 +8,15 @@
 *
 **************************************************************************/
 
-const apiCall = require('./apiCalls')
+import apiCalls from "../services/apiCalls";
 class User {
-    register(userInput: any){
+    register=(userInput: any) => {
         const data = {
             input: userInput,
-            url: process.env.VUE_APP_URL+"/registration"
+            url: process.env.BASE_URL+"/registration"
         }
-        return apiCall.post(data)
+        console.log("url: "+data.url);
+        return apiCalls.post(data)
     }
 }
 

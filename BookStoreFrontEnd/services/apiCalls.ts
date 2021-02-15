@@ -10,7 +10,7 @@
 
 const axios = require('axios');
 class APiCall {
-    post(data: any) {
+    post=(data: any) => {
         return axios.post(data.url, data.input);
     }
 }

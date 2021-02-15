@@ -6,75 +6,11 @@
           <v-tabs>
             <v-tab>Login</v-tab>
             <v-tab-item>
-              <v-card-text>
-                <v-row>
-                  <v-text-field
-                    v-model="user.fullName"
-                    outlined
-                    dense
-                    label="Email id"
-                    :rules="[textValidation.required]"
-                    required
-                  />
-                </v-row>
-                <v-row>
-                  <v-text-field
-                    v-model="user.fullName"
-                    outlined
-                    dense
-                    label="Password"
-                    :rules="[textValidation.required]"
-                    required
-                  />
-                </v-row>
-              </v-card-text>
-              <v-btn class="register-login-btn ml-8 pb-5" @click="handleLogin">Login</v-btn>
+              <Login />
             </v-tab-item>
             <v-tab>Sign up</v-tab>
             <v-tab-item>
-              <v-card-text>
-                <v-row>
-                  <v-text-field
-                    v-model="user.fullName"
-                    outlined
-                    dense
-                    label="Full name"
-                    :rules="[textValidation.required,textValidation.limit_length]"
-                    required
-                  />
-                </v-row>
-                <v-row>
-                  <v-text-field
-                    v-model="user.emailId"
-                    outlined
-                    dense
-                    label="Email address"
-                    :rules="[textValidation.required]"
-                    required
-                  />
-                </v-row>
-                <v-row>
-                  <v-text-field
-                    v-model="user.password"
-                    outlined
-                    dense
-                    label="Password"
-                    :rules="[textValidation.required]"
-                    required
-                  />
-                </v-row>
-                <v-row>
-                  <v-text-field
-                    v-model="user.mobileNumber"
-                    outlined
-                    dense
-                    label="Mobile Number"
-                    :rules="[textValidation.required,textValidation.text_length_mobile]"
-                    required
-                  />
-                </v-row>
-              </v-card-text>
-              <v-btn class="register-login-btn ml-8 pb-5" @click="handleRegister">Register</v-btn>
+              <SignUp />
             </v-tab-item>
           </v-tabs>
         </v-card>
@@ -87,21 +23,20 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import User from "../services/user";
+import Login from "../components/login.vue";
+import SignUp from "../components/signUp.vue";
 //import { Vue, Component } from "vue-property-decorator";
 //import {Validations} from 'vue-property-decorators';
-import { required, minLength, email, sameAs } from "vuelidate/lib/validators";
+//import { required, minLength, email, sameAs } from "vuelidate/lib/validators";
 //import Vue from 'vue'
 //import Component from 'vue-class-component';
 
-/* @Component({
-  validations: {
-     emailId: {
-      required,
-      email
+@Component({
+    components: {
+      SignUp,
+      Login
     }
-  }
-}) */
-
+})
 export default class Register extends Vue {
   private user: any = {
     fullName: "",
@@ -109,29 +44,24 @@ export default class Register extends Vue {
     password: "",
     mobileNumber: ""
   };
+  private showPassword: boolean = false;
+  private showPasswordRegister: boolean = false;
   items: string[] = ["Login", "Sign up"];
-  /* private fullName: string = "shilpa k";
-  private emailId: string = "";
-  private password: string = "";
-  private mobileNumber: string = ""; */
-  /*   get fullNameErrors(): string[] {
-      var errors: string[] = [];
-      if (!this.$v.firstName.$dirty)
-       return errors;
-      !this.$v.firstName.required && errors.push("Enter first name")
-      !this.$v.firstName.minLength &&
-        errors.push("Name must contain 2 characters")
-      return errors
-  } */
   textValidation = {
     required: (v: string) => !!v || "this is required",
     limit_length: (v: string) =>
       v.length <= 10 || "Name should contain atleast 2 characters",
     text_length_mobile: (v: string) =>
-      v.length <= 10 ||
+      v.length <= 13 ||
       "Phone number must contain 10 digits followed by country code"
   };
-  handleRegister() {
+  handleRegister = () => {
+    alert((this.$refs.form as Vue & { validate: () => boolean }).validate());
+    if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
+      alert("success");
+    } else {
+      alert("failed");
+    }
     console.log("this: " + this);
     var data = {
       fullName: this.user.fullName,
@@ -155,7 +85,7 @@ export default class Register extends Vue {
     }else{
          alert("failed")
     } */
-  }
+  };
 
   /*  @Validations()
     validations = {
