@@ -10,12 +10,21 @@
 
 import apiCalls from "../services/apiCalls";
 class User {
+    // user registration
     register=(userInput: any) => {
         const data = {
             input: userInput,
             url: process.env.BASE_URL+"/registration"
         }
-        console.log("url: "+data.url);
+        return apiCalls.post(data)
+    }
+
+    // user login
+    login=(userInput: any) => {
+        const data = {
+            input: userInput,
+            url: process.env.BASE_URL+"/login"
+        }
         return apiCalls.post(data)
     }
 }

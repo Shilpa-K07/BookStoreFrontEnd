@@ -1,6 +1,8 @@
+@use './variables.scss';
+
 .card-height-width {
-    max-width: 20% !important;
-    //height: 80% !important;
+    width: 260px !important;
+    height: 380px;
   }
 .register-login-btn {
     color: white !important;

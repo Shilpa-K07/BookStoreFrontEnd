@@ -44,7 +44,7 @@ import User from "../services/user";
 //import { required, minLength, email, sameAs } from "vuelidate/lib/validators";
 //import Vue from 'vue'
 //import Component from 'vue-class-component';
-
+@Component({})
 export default class SignUp extends Vue {
   private user: any = {
     fullName: "",
@@ -79,7 +79,7 @@ export default class SignUp extends Vue {
       /([!@$%])/.test(v) || "Must have one special character [!@#$%]"
   };
 
-  handleRegister = () => {
+  private handleRegister = () => {
     if ((this.$refs.signUp as Vue & { validate: () => boolean }).validate()) {
       var data = {
         fullName: this.user.fullName,
