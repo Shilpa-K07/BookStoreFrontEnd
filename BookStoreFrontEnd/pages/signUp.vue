@@ -1,8 +1,16 @@
 <template>
   <v-form ref="signUp">
+    <Snackbar ref="snack" />
     <v-card-text>
       <v-row>
-        <v-text-field v-model="user.fullName" outlined dense label="Full name" required />
+        <v-text-field
+          v-model="user.fullName"
+          outlined
+          dense
+          label="Full name"
+          :rules="[nameRules.required, nameRules.length]"
+          required
+        />
       </v-row>
       <v-row>
         <v-text-field
@@ -28,7 +36,14 @@
         />
       </v-row>
       <v-row>
-        <v-text-field v-model="user.mobileNumber" outlined dense label="Mobile Number" required />
+        <v-text-field
+          v-model="user.mobileNumber"
+          outlined
+          dense
+          label="Mobile Number"
+          :rules="[mobileNoRules.required, mobileNoRules.length]"
+          required
+        />
       </v-row>
     </v-card-text>
     <v-btn class="register-login-btn mb-5" @click="handleRegister">Register</v-btn>
@@ -39,12 +54,13 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import User from "../services/user";
-//import { Vue, Component } from "vue-property-decorator";
-//import {Validations} from 'vue-property-decorators';
-//import { required, minLength, email, sameAs } from "vuelidate/lib/validators";
-//import Vue from 'vue'
-//import Component from 'vue-class-component';
-@Component({})
+import Snackbar from "../components/Snackbar.vue";
+
+@Component({
+  components: {
+    Snackbar
+  }
+})
 export default class SignUp extends Vue {
   private user: any = {
     fullName: "",
@@ -53,9 +69,10 @@ export default class SignUp extends Vue {
     mobileNumber: ""
   };
   private showPassword: boolean = false;
+   private timeout: number = 2000;
   private nameRules: any = {
     required: (v: string) => !!v || "Name is required",
-    limit_length: (v: string) =>
+    length: (v: string) =>
       v.length <= 10 || "Name should contain atleast 2 characters"
   };
   private mobileNoRules: any = {
@@ -81,6 +98,7 @@ export default class SignUp extends Vue {
 
   private handleRegister = () => {
     if ((this.$refs.signUp as Vue & { validate: () => boolean }).validate()) {
+      const child: any = this.$refs.snack;
       var data = {
         fullName: this.user.fullName,
         emailId: this.user.emailId,
@@ -90,15 +108,33 @@ export default class SignUp extends Vue {
       User.register(data)
         .then((response: any) => {
           if (response) {
-            console.log(JSON.stringify(response));
+            const snackbarData = {
+              text: "Registration successfull",
+              timeout: this.timeout
+            };
+            sessionStorage.setItem("token", response.data.token);
+            sessionStorage.setItem("emailId", response.data.data.emailId);
+            sessionStorage.setItem("name", response.data.data.name);
+            child.setSnackbar(snackbarData);
           }
         })
         .catch((error: any) => {
-          console.error("error: " + JSON.stringify(error));
+           if (error.response.status == 409) {
+            const snackbarData = {
+              text: "User exists with this email Id",
+              timeout: this.timeout
+            };
+            child.setSnackbar(snackbarData);
+          } 
+          else{
+            const snackbarData = {
+              text: "Some error occurred",
+              timeout: this.timeout
+            };
+            child.setSnackbar(snackbarData);
+          }
         });
-    } else {
-      alert("failed");
-    }
+    } 
   };
 }
 </script>
