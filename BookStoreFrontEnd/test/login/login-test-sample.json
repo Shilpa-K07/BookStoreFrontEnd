@@ -1,5 +1,24 @@
 {
-    "login-email" : {
-        "emailId": "shilpa07udupi@gmail.com"
+    "login" : {
+        "emailId": "shilpa07udupi@gmail.com",
+        "password": "abcd@123A"
+    },
+    "empty-email": {
+        "emailId": ""
+    },
+    "invalid-email-without@" :{
+        "emailId": "shilpa07udupigmail.com"
+    },
+    "empty-password": {
+        "password": ""
+    },
+    "password-without-uppercase": {
+        "password": "abcd@123a"
+    },
+    "password-without-specialchar": {
+        "password": "abcdi123a"
+    },
+    "password-without-digit": {
+        "password": "abcdiwer@a"
     }
 }
