@@ -108,6 +108,7 @@ export default class Login extends Vue {
   };
 }
 </script>
+
 <style lang="scss">
 @import url("../assets/registration.scss");
 </style>

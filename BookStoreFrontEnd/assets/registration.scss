@@ -1,11 +1,10 @@
 @use './variables.scss';
-
 .card-height-width {
     width: 260px !important;
     height: 380px;
   }
 .register-login-btn {
     color: white !important;
-    background-color: #A03037 !important;
+    background-color: $darkGrey !important;
     width: 100% !important;
   }
