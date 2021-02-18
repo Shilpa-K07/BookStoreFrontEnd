@@ -25,6 +25,10 @@
             </v-app-bar>
           </v-col>
         </v-row>
+        <v-row class="book-main-title">Books</v-row>
+        <v-row class="book-card">
+        <Book />
+        </v-row>
       </v-card>
     </v-content>
   </v-app>
@@ -33,8 +37,12 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
-
-@Component({})
+import Book from '../components/Book.vue';
+@Component({
+  components: {
+    Book
+  }
+})
 export default class Dashboard extends Vue{
     private title: string = 'BookStore';
     private changeStyle: boolean = false;

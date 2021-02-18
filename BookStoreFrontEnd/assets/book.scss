@@ -1,0 +1,42 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.b-card {
+    height: 275px;
+    width: 235px;
+}
+.b-card .row {
+    display: grid;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+}
+.v-image {
+    height: 120px;
+    width: 80px;
+    margin-left: 72px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+.book-image {
+    background-color: #E2E2E2;
+}
+.book-content {
+    margin-top: 20px !important;
+}
+.book-content .v-list-item {
+    min-height: 25px !important;
+}
+.book-title {
+    font-size: 15px;
+    font-weight: 550;
+}
+.book-author {
+    font-size: 12px;
+    color: #878787 !important;
+    font-weight: 500;
+}
+.book-price {
+    font-size: 15px;
+    font-weight: bold;
+}

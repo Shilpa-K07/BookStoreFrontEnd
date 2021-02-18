@@ -6,6 +6,9 @@
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
     background-color: white;
 }
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
 .v-toolbar__content, .v-toolbar__extension {
     background-color: #A03037;
     color: white !important;
@@ -20,4 +23,13 @@
 
 .app-bar .theme--light.v-icon {
     color: white !important;
+}
+.book-main-title {
+    margin-top: 90px !important;
+    font-size: 20px;
+    margin-left: 150px;
+}
+.book-card {
+    margin-top: 50px !important;
+    margin-left: 120px;
 }
