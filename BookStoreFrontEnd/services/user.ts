@@ -9,6 +9,7 @@
 **************************************************************************/
 
 import apiCalls from "../services/apiCalls";
+import header from "../services/header";
 class User {
     // user registration
     register=(userInput: any) => {
@@ -26,6 +27,15 @@ class User {
             url: process.env.BASE_URL+"/login"
         }
         return apiCalls.post(data)
+    }
+
+    // get books
+    getBooks=() => {
+        const data = {
+            url: process.env.BASE_URL+"/book",
+            headers: { 'Content-Type': 'application/json', 'token': sessionStorage.token } 
+        }
+        return apiCalls.get(data)
     }
 }
 

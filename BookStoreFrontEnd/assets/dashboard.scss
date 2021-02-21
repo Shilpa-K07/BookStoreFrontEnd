@@ -1,3 +1,6 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
 .main-card {
     height: 100%;
     width: 100%
@@ -5,9 +8,6 @@
 .search-text-style.v-text-field.v-text-field--solo:not(.v-text-field--solo-flat) > .v-input__control > .v-input__slot {
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
     background-color: white;
-}
-*{
-    font-family: Arial, Helvetica, sans-serif;
 }
 .v-toolbar__content, .v-toolbar__extension {
     background-color: #A03037;
@@ -24,12 +24,20 @@
 .app-bar .theme--light.v-icon {
     color: white !important;
 }
+.flex.md3 {
+    margin-left: 50px;
+    margin-right: -85px;
+}
 .book-main-title {
     margin-top: 90px !important;
     font-size: 20px;
-    margin-left: 150px;
+    margin-left: 100px;
 }
 .book-card {
-    margin-top: 50px !important;
-    margin-left: 120px;
+   /*  margin-top: 50px !important;
+    margin-left: 120px; */
 }
+/* .book-card .flex.md3 {
+    max-width: 22% !important;
+} */
+
