@@ -24,27 +24,6 @@ import {Prop, Vue, Component} from "vue-property-decorator";
 @Component
 export default class Book extends Vue {
   @Prop() private items!: any[];
-  /* private lists: Array<object> = [
-    {
-      author: "Dan Brown",
-      title: "Angels And Demons",
-      image: "http://books.google.com/books/content?id=d5xgYw4Ts0gC&printsec=frontcover&img=1&zoom=5",
-      price: "Rs. 1490"
-    },
-    {
-      author: "Stephen King",
-      title: "Carrie",
-      image: "http://books.google.com/books/content?id=KOPSjMuVN4kC&printsec=frontcover&img=1&zoom=5",
-      price: "Rs. 1000"
-    }
-    ,
-    {
-     author: "Rujuta Divekar",
-      title: "Indian Superfoods",
-      image: "http://books.google.com/books/content?id=4oFoDwAAQBAJ&printsec=frontcover&img=1&zoom=5",
-      price: "Rs. 1500"
-    }
-  ]; */
   private lists: Array<object> = [];
   public setBook = (books: any) => {
     this.items = books.data.data;

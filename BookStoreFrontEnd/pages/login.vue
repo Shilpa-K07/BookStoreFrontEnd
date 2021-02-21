@@ -87,6 +87,8 @@ export default class Login extends Vue {
             sessionStorage.setItem("emailId", response.data.data.emailId);
             sessionStorage.setItem("name", response.data.data.name);
             child.setSnackbar(snackbarData);
+            this.$router.push('/dashboard');
+
           }
         })
         .catch((error: any) => {
