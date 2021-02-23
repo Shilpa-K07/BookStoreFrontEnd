@@ -24,7 +24,7 @@ class User {
     login=(userInput: any) => {
         const data = {
             input: userInput,
-            url: process.env.BASE_URL+"/login"
+            url: process.env.BASE_URL+"/userLogin"
         }
         return apiCalls.post(data)
     }

@@ -98,7 +98,7 @@ export default class Login extends Vue {
               timeout: this.timeout
             };
             child.setSnackbar(snackbarData);
-          } else {
+          } else {console.log('error: '+JSON.stringify(error));
             const snackbarData = {
               text: "Some error occurred",
               timeout: this.timeout

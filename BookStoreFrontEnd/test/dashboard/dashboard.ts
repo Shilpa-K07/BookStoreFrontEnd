@@ -1,5 +1,5 @@
 import { shallowMount, createLocalVue} from '@vue/test-utils';
-import DashBoard from '../../pages/DashBoard.vue';
+import DashBoard from '../../pages/dashBoard.vue';
 
 import Vuetify from 'vuetify';
   let wrapper: any
