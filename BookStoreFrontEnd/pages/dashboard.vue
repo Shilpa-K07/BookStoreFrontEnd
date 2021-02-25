@@ -5,7 +5,7 @@
       <v-card class="mx-auto main-card" outlined>
         <v-row>
           <v-col>
-            <v-app-bar fixed elevate-on-scroll class="app-bar">
+           <!--  <v-app-bar fixed elevate-on-scroll class="app-bar">
               <v-icon class="ml-9 mr-2">mdi-book-open-variant</v-icon>
               <v-toolbar-title class>{{title}}</v-toolbar-title>
               <v-text-field
@@ -23,7 +23,8 @@
                 <v-icon class="ml-5">mdi-account-outline</v-icon>
                 <v-icon class="mr-8">mdi-cart-outline</v-icon>
               </v-col>
-            </v-app-bar>
+            </v-app-bar> -->
+            <AppBar />
           </v-col>
         </v-row>
         <v-row class="book-main-title mb-8">Books</v-row>
@@ -39,10 +40,12 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import Book from "../components/Book.vue";
+import AppBar from "../components/AppBar.vue";
 import user from "../services/user";
 @Component({
   components: {
-    Book
+    Book,
+    AppBar
   }
 })
 export default class Dashboard extends Vue {
