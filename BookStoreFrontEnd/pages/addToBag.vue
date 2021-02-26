@@ -5,7 +5,7 @@
         <AppBar ref="appBar"/>
       </v-row>
       <v-row class="book-item-title mb-2">
-        <nuxt-link :to="{ path: 'dashboard', query: {book: item}}">Home</nuxt-link>
+        <nuxt-link :to="{ path: 'dashboard', query: {books: items}}">Home</nuxt-link> |
         <nuxt-link :to="{ path: 'addToBag', query: {book: item}}">Book</nuxt-link>
         </v-row>
       <v-row>
@@ -56,12 +56,16 @@ import MyCart from "./myCart.vue";
 })
 export default class AddToBag extends Vue {
   private item: any = {};
-  private items: any[] =[];
+  private items: any;
   beforeMount() {
     this.item = this.$route.query.book;
+    this.items = this.$route.query.books;
   }
 
   addToCart(){
+    if(this.items===undefined){
+      this.items = [];
+    }
   this.items.push(this.item);
     const appBar: any = this.$refs.appBar;
     appBar.setBook(this.items);

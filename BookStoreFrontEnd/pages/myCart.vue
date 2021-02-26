@@ -7,11 +7,9 @@
       <v-row>
         <v-layout row wrap class="mt-5">
           <v-flex xs24 md12>
-            <v-row>
-                <v-col md2>
-                </v-col>
-                <v-col md10 class="mt-5 ml-9 cart-title">
-              <nuxt-link :to="{ path: 'dashboard', query: {book: item}}">Home</nuxt-link>
+            <v-row class="mt-10 cart-title">
+                <v-col  class="mt-5">
+              <nuxt-link :to="{ path: 'dashboard', query: {books: items}}">Home</nuxt-link> |
               <nuxt-link :to="{ path: 'myCart', query: {book: item}}">Book</nuxt-link>
                 </v-col>
             </v-row>

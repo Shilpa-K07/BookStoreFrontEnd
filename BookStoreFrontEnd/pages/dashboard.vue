@@ -5,7 +5,7 @@
       <v-card class="mx-auto main-card" outlined>
         <v-row>
           <v-col>
-            <AppBar />
+            <AppBar ref="appBar" />
           </v-col>
         </v-row>
         <v-row class="book-main-title mb-8">Books</v-row>
@@ -33,12 +33,19 @@ export default class Dashboard extends Vue {
   private title: string = "BookStore";
   private changeStyle: boolean = false;
   private timeout: number = 2000;
-  private childBook: any = this.$refs.books;
+  //private childBook: any = this.$refs.books;
+  private items: any;
 
   beforeMount() {
+    this.items = this.$route.query.books;
+    console.log('rt: '+JSON.stringify(this.$route.query.books));
+    console.log('bm: '+JSON.stringify(this.items));
     this.getBooks();
   }
 
+  mounted() {
+    this.setBooks();
+  }
   getBooks = () => {
     const childSnackBar: any = this.$refs.snack;
     user
@@ -54,7 +61,16 @@ export default class Dashboard extends Vue {
         };
         //childSnackBar.setSnackbar(snackbarData);
       });
-  };
+  }
+
+  private setBooks = () => {
+      const childBook: any = this.$refs.books;
+      childBook.setCartItems(this.items);
+
+      const appBar: any = this.$refs.appBar;
+      console.log('dashboard: '+JSON.stringify(this.items));
+      appBar.setBook(this.items);
+  }
 }
 </script>
 
