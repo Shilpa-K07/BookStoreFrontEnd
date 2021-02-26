@@ -2,23 +2,26 @@
   <v-app>
     <v-content>
       <v-row>
-        <AppBar />
+        <AppBar ref="appBar"/>
       </v-row>
-      <v-row class="book-item-title mb-2">Book</v-row>
+      <v-row class="book-item-title mb-2">
+        <nuxt-link :to="{ path: 'dashboard', query: {book: item}}">Home</nuxt-link>
+        <nuxt-link :to="{ path: 'addToBag', query: {book: item}}">Book</nuxt-link>
+        </v-row>
       <v-row>
         <v-layout row wrap class="mt-5">
-          <v-flex md6>
+          <v-flex xs12 md6>
             <v-row>
               <v-card class="mx-auto book-wishlist-card" outlined>
                 <v-img class="mx-auto book-item-image mt-4" :src="item.books.image"></v-img>
               </v-card>
             </v-row>
             <v-row class="d-flex">
-              <v-btn class="notify-me-btn mt-5">Notify Me</v-btn>
+              <v-btn class="notify-me-btn mt-5" @click="addToCart">Add to bag</v-btn>
               <v-btn class="wish-list-btn mt-5"><v-icon class="mr-2">mdi-heart</v-icon>wishlist</v-btn>
             </v-row>
           </v-flex>
-          <v-flex md6 class="book-description">
+          <v-flex xs12 md6 class="book-description">
             <v-row class="book-details">
             <v-list-item class="add-bag-book-title">{{item.books.title}}</v-list-item>
             <v-list-item class="add-bag-book-author">{{item.books.author}}</v-list-item>
@@ -32,7 +35,9 @@
               <v-list-item class="add-bag-book-description mt-5">Book Detail</v-list-item>
               <v-list-item class="description">{{item.books.description}}</v-list-item>
             </v-row>
+            <v-divider class="mt-5"/>
           </v-flex>
+          <MyCart ref="mycart" v-show="false"/>
         </v-layout>
       </v-row>
     </v-content>
@@ -42,17 +47,24 @@
 <script lang="ts">
 import { Prop, Vue, Component } from "vue-property-decorator";
 import AppBar from "../components/AppBar.vue";
-
+import MyCart from "./myCart.vue";
 @Component({
   components: {
-    AppBar
+    AppBar,
+    MyCart
   }
 })
 export default class AddToBag extends Vue {
   private item: any = {};
-
+  private items: any[] =[];
   beforeMount() {
     this.item = this.$route.query.book;
+  }
+
+  addToCart(){
+  this.items.push(this.item);
+    const appBar: any = this.$refs.appBar;
+    appBar.setBook(this.items);
   }
 }
 </script>
