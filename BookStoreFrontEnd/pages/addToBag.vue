@@ -18,7 +18,7 @@
             </v-row>
             <v-row class="d-flex">
               <v-btn class="notify-me-btn mt-5" @click="addToCart">Add to bag</v-btn>
-              <v-btn class="wish-list-btn mt-5"><v-icon class="mr-2">mdi-heart</v-icon>wishlist</v-btn>
+              <v-btn class="wish-list-btn mt-5" @click="addToWishlist"><v-icon class="mr-2">mdi-heart</v-icon>wishlist</v-btn>
             </v-row>
           </v-flex>
           <v-flex xs12 md6 class="book-description">
@@ -57,22 +57,40 @@ import MyCart from "./myCart.vue";
 export default class AddToBag extends Vue {
   private item: any = {};
   private items: any;
+  private wishlist: any;
   beforeMount() {
     this.item = this.$route.query.book;
     if(this.$route.query.books != undefined)
        this.items = this.$route.query.books;
     else
       this.items = [];
+
+    if(this.$route.query.wishlistBooks != undefined)
+      this.wishlist = this.$route.query.wishlistBooks;
+    else  
+      this.wishlist = [];
   }
 
+  mounted(){
+    if(this.wishlist !=undefined){
+      const appBar: any = this.$refs.appBar;
+      appBar.setWishlistItems(this.wishlist);
+    }
+  }
   addToCart(){
   this.items.push(this.item);
     const appBar: any = this.$refs.appBar;
     appBar.setBook(this.items);
   }
 
+  addToWishlist(){
+    this.wishlist.push(this.item);
+    const appBar: any = this.$refs.appBar;
+    appBar.setWishlistItems(this.wishlist);
+  }
+
   goToHome(){
-    this.$router.push({path:'/dashboard',query:{books:this.items}});
+    this.$router.push({path:'/dashboard',query:{books:this.items, wishlistBooks:this.wishlist}});
   }
 }
 </script>

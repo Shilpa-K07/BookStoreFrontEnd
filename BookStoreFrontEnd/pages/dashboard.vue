@@ -36,8 +36,10 @@ export default class Dashboard extends Vue {
   //private childBook: any = this.$refs.books;
   private items: any;
   private cartItems: any;
+  private wishlist: any;
   beforeMount() {
     this.items = this.$route.query.books;
+    this.wishlist = this.$route.query.wishlistBooks;
     this.getBooks();
   }
 
@@ -66,6 +68,9 @@ export default class Dashboard extends Vue {
       childBook.setCartItems(this.items);
       const appBar: any = this.$refs.appBar;
       appBar.setBook(this.items);
+
+      childBook.setWishlistItems(this.wishlist);
+      appBar.setWishlistItems(this.wishlist);
   }
 }
 </script>
