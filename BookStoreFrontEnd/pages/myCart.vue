@@ -49,21 +49,6 @@ import AppBar from "../components/AppBar.vue";
   }
 })
 export default class MyCart extends Vue {
-  /* private lists: Array<object> = [
-    {
-      author: "Chetan Bhagat",
-      title: "The Girl in Room 105",
-      image: "http://books.google.com/books/content?id=GHt_uwEACAAJ&printsec=frontcover&img=1&zoom=5",
-      price: "Rs. 1490"
-    },
-    {
-     author: "Rujuta Divekar",
-      title: "Indian Superfoods",
-      image: "http://books.google.com/books/content?id=4oFoDwAAQBAJ&printsec=frontcover&img=1&zoom=5",
-      price: "1500"
-    }
-  ]; */
-
   private items: any;
   beforeMount() {
     this.items = this.$route.query.books;

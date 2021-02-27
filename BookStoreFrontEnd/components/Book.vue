@@ -26,7 +26,7 @@ import {Prop, Vue, Component} from "vue-property-decorator";
 @Component
 export default class Book extends Vue {
   @Prop() private items!: any[];
-  private cartItems: any;
+  @Prop() private cartItems!: any[];
   private lists: Array<object> = [];
   public setBook = (books: any) => {
     this.items = books.data.data;

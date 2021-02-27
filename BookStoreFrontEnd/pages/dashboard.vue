@@ -10,7 +10,7 @@
         </v-row>
         <v-row class="book-main-title mb-8">Books</v-row>
         <v-row>
-          <Book ref="books" />
+           <Book ref="books" />
         </v-row>
       </v-card>
     </v-content>
@@ -35,16 +35,14 @@ export default class Dashboard extends Vue {
   private timeout: number = 2000;
   //private childBook: any = this.$refs.books;
   private items: any;
-
+  private cartItems: any;
   beforeMount() {
     this.items = this.$route.query.books;
-    console.log('rt: '+JSON.stringify(this.$route.query.books));
-    console.log('bm: '+JSON.stringify(this.items));
     this.getBooks();
   }
 
   mounted() {
-    this.setBooks();
+   this.setBooks();
   }
   getBooks = () => {
     const childSnackBar: any = this.$refs.snack;
@@ -63,12 +61,10 @@ export default class Dashboard extends Vue {
       });
   }
 
-  private setBooks = () => {
+  private setBooks(){
       const childBook: any = this.$refs.books;
       childBook.setCartItems(this.items);
-
       const appBar: any = this.$refs.appBar;
-      console.log('dashboard: '+JSON.stringify(this.items));
       appBar.setBook(this.items);
   }
 }
