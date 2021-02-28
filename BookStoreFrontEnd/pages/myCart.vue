@@ -16,13 +16,13 @@
             <v-row>
               <v-card class="mx-auto cart-card" outlined>
                 <v-card-title>My cart</v-card-title>
-                <v-flex v-for="item in items" :key="item.books.title">
+                <v-flex v-for="item in items" :key="item.books.title" class="mt-2">
                   <v-layout class="mb-5">
                     <v-flex md2>
-                      <v-img class="cart-image ml-5" :src="item.books.image"></v-img>
+                      <v-img class="cart-image ml-5 mt-2" :src="item.books.image"></v-img>
                     </v-flex>
                     <v-flex md10>
-                      <v-row class="ml-5">
+                      <v-row class="ml-5 mt-1">
                         <v-list-item>{{item.books.title}}</v-list-item>
                         <v-list-item>{{item.books.author}}</v-list-item>
                         <v-list-item>{{'Rs.'+item.books.price}}</v-list-item>

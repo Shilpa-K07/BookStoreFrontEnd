@@ -36,6 +36,12 @@
               <v-list-item class="description">{{item.books.description}}</v-list-item>
             </v-row>
             <v-divider class="mt-5"/>
+            <v-row>
+              <v-list-item class="mt-5">Customer Feedback</v-list-item>
+              <v-card class="mx-auto feedback-cart">
+                <h6>Overall rating</h6>
+              </v-card>
+              </v-row>
           </v-flex>
           <MyCart ref="mycart" v-show="false"/>
         </v-layout>
