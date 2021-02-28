@@ -36,10 +36,17 @@
               <v-list-item class="description">{{item.books.description}}</v-list-item>
             </v-row>
             <v-divider class="mt-5"/>
-            <v-row>
+            <v-row class="cust-feedback">
               <v-list-item class="mt-5">Customer Feedback</v-list-item>
-              <v-card class="mx-auto feedback-cart">
-                <h6>Overall rating</h6>
+              <v-card class="mt-5 feedback-cart ml-3" outlined>
+                <h6 class="ml-5 mt-2 mb-2">Overall rating</h6>
+                <v-textarea
+                  solo
+                  rows="2"
+                  label="Write something here"
+                  class="ml-5 mr-5"
+                ></v-textarea>
+                  <v-btn class="cust-feedback-submit mb-5">Submit</v-btn>
               </v-card>
               </v-row>
           </v-flex>

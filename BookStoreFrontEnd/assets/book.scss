@@ -94,5 +94,17 @@
     font-size: 12px !important;
 }
 .feedback-cart {
-    width: 50%;
+    width: 100%;
 }
+.cust-feedback .theme--light.v-card {
+    background-color: #DBDBDB;
+}
+.cust-feedback .v-sheet.v-card {
+    border: none;
+}
+
+.cust-feedback-submit {
+    color: white !important;
+    background-color: #3371B5 !important;
+    width: 125px !important;
+  }
