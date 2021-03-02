@@ -27,6 +27,11 @@
                         <v-list-item>{{item.books.author}}</v-list-item>
                         <v-list-item>{{'Rs.'+item.books.price}}</v-list-item>
                       </v-row>
+                      <v-row class="counter">
+                        <v-icon class="counter-minus" @click="decrementCounter">mdi-minus-circle-outline</v-icon>
+                        <v-text-field dense outlined v-model="counter_value" class="counter-field"></v-text-field>
+                        <v-icon class="counter-plus" @click="incrementCounter">mdi-plus-circle-outline</v-icon>
+                        </v-row>
                     </v-flex>
                   </v-layout>
                 </v-flex>
@@ -50,9 +55,22 @@ import AppBar from "../components/AppBar.vue";
 })
 export default class MyCart extends Vue {
   private items: any;
+  private counter_value: number= 1;
   beforeMount() {
     this.items = this.$route.query.books;
   }
+  incrementCounter = () => {
+    this.counter_value = (this.counter_value+1);
+    alert(this.counter_value)
+    this.emitResult();
+  }
+  decrementCounter = () => {
+    this.counter_value = (this.counter_value-1);
+    this.emitResult();
+  }
+  emitResult = ()=> {
+      this.$emit('input', this.counter_value)
+    }
 }
 </script>
 

@@ -9,13 +9,13 @@
 **************************************************************************/
 
 import apiCalls from "../services/apiCalls";
-import header from "../services/header";
+const BASE_URL = process.env.BASE_URL;
 class User {
     // user registration
     register=(userInput: any) => {
         const data = {
             input: userInput,
-            url: process.env.BASE_URL+"/registration"
+            url: BASE_URL+"/registration"
         }
         return apiCalls.post(data)
     }
@@ -24,7 +24,7 @@ class User {
     login=(userInput: any) => {
         const data = {
             input: userInput,
-            url: process.env.BASE_URL+"/userLogin"
+            url: BASE_URL+"/userLogin"
         }
         return apiCalls.post(data)
     }
@@ -32,7 +32,7 @@ class User {
     // get books
     getBooks=() => {
         const data = {
-            url: process.env.BASE_URL+"/book",
+            url: BASE_URL+"/book",
             headers: { 'Content-Type': 'application/json', 'token': sessionStorage.token } 
         }
         return apiCalls.get(data)
