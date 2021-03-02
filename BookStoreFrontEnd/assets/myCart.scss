@@ -11,3 +11,32 @@
 .cart-title {
     margin-left: 330px;
 }
+.counter-field {
+     
+}
+.counter .v-text-field--outlined.v-input--dense.v-text-field--outlined > .v-input__control > .v-input__slot{
+    min-height: 0px;
+}
+.counter .v-text-field.v-text-field--enclosed {
+  margin-top: 20px;
+  margin-right: 15px;
+
+}
+.counter .v-text-field .v-input__control {
+  width: 40px;
+}
+.counter-minus{
+  margin-left: 40px;
+  margin-right: 20px;
+}
+.counter-plus{
+  margin-right: 450px;
+}
+.place-order{
+    justify-content: flex-end;
+}
+.place-order-btn {
+  color: white !important;
+  background-color: #3371B5 !important;
+  width: 150px !important;
+}

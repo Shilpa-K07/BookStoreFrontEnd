@@ -32,10 +32,17 @@
                         <v-text-field dense outlined v-model="counter_value" class="counter-field"></v-text-field>
                         <v-icon class="counter-plus" @click="incrementCounter">mdi-plus-circle-outline</v-icon>
                         </v-row>
+                      <v-row class="d-flex place-order">
+                        <v-btn class="place-order-btn mr-5">Place order</v-btn>
+                      </v-row>
                     </v-flex>
                   </v-layout>
+                   <v-divider class="mt-5"/>
                 </v-flex>
               </v-card>
+            </v-row>
+            <v-row>
+              <AddressDetails />
             </v-row>
           </v-flex>
         </v-layout>
@@ -47,10 +54,12 @@
 <script lang="ts">
 import { Prop, Vue, Component } from "vue-property-decorator";
 import AppBar from "../components/AppBar.vue";
+import AddressDetails from "../components/AddressDetails.vue";
 
 @Component({
   components: {
-    AppBar
+    AppBar,
+    AddressDetails
   }
 })
 export default class MyCart extends Vue {
