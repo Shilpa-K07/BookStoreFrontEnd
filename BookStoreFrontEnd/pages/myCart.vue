@@ -33,7 +33,7 @@
                         <v-icon class="counter-plus" @click="incrementCounter">mdi-plus-circle-outline</v-icon>
                         </v-row>
                       <v-row class="d-flex place-order">
-                        <v-btn class="place-order-btn mr-5">Place order</v-btn>
+                        <v-btn class="place-order-btn mr-5" @click="placeOrder(item)">Place order</v-btn>
                       </v-row>
                     </v-flex>
                   </v-layout>
@@ -43,6 +43,9 @@
             </v-row>
             <v-row>
               <AddressDetails />
+            </v-row>
+            <v-row>
+              <OrderSummary ref="orderSummary"/>
             </v-row>
           </v-flex>
         </v-layout>
@@ -55,7 +58,7 @@
 import { Prop, Vue, Component } from "vue-property-decorator";
 import AppBar from "../components/AppBar.vue";
 import AddressDetails from "../components/AddressDetails.vue";
-
+import OrderSummary from "../components/OrderSummary.vue";
 @Component({
   components: {
     AppBar,
@@ -64,6 +67,7 @@ import AddressDetails from "../components/AddressDetails.vue";
 })
 export default class MyCart extends Vue {
   private items: any;
+  private isOrderPlaced: boolean=false;
   private counter_value: number= 1;
   beforeMount() {
     this.items = this.$route.query.books;
@@ -78,8 +82,13 @@ export default class MyCart extends Vue {
     this.emitResult();
   }
   emitResult = ()=> {
-      this.$emit('input', this.counter_value)
+    this.$emit('input', this.counter_value)
     }
+  placeOrder = (item: any) => {alert('1')
+     const orderSummary: any = this.$refs.orderSummary;
+     orderSummary.setBook(item);
+     this.isOrderPlaced = true;
+  }
 }
 </script>
 

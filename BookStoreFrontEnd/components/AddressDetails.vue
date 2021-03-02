@@ -9,7 +9,6 @@
         <v-row class="ml-2">1.WORK</v-row>
         <v-row class="mt-5">
             <v-text-field label="Address" dense outlined class="mr-5 ml-5"></v-text-field>
-            
         </v-row>
         <v-row class="mt-5">
             <v-text-field label="city/town" dense outlined class="mr-5 ml-5"></v-text-field>
