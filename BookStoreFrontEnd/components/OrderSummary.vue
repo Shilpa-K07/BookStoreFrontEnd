@@ -1,5 +1,5 @@
 <template>
-    <v-card class="mx-auto cart-card mt-5 mb-5" outlined>
+    <v-card class="mx-auto cart-card mt-5 mb-5" outlined v-show="showDetails">
                 <v-card-title>Order Summary</v-card-title>
                 <v-card-text>
                   <v-layout class="mb-5">
@@ -13,7 +13,7 @@
                         <v-list-item>{{'Rs.'+price}}</v-list-item>
                       </v-row>
                       <v-row class="d-flex place-order">
-                        <v-btn class="place-order-btn mr-5">Checkout</v-btn>
+                        <v-btn class="place-order-btn mr-5" @click="CheckoutOrder">Checkout</v-btn>
                       </v-row>
                     </v-flex>
                   </v-layout>
@@ -29,12 +29,29 @@ export default class OrderSummary extends Vue{
    @Prop() private author: any="";
    @Prop() private price: any="";
    @Prop() private title: any="";
+   @Prop() private showDetails: boolean=false;
+  @Prop() private book: any;
+  @Prop() private orderedBooks: any;
+
+  beforeMount() {
+     if(this.$route.query.orderedBooks != undefined)
+       this.orderedBooks = this.$route.query.orderedBooks;
+    else
+      this.orderedBooks = [];
+  }
     public setBook = (book: any) => {
     this.title = book.books.title;
     this.image = book.books.image;
     this.price = book.books.price;
     this.author = book.books.author;
-    alert('inside: '+this.author)
+    this.showDetails = true;
+    this.book = book;
+  }
+
+  public CheckoutOrder = () => {
+    this.orderedBooks=this.book;
+    this.$emit("onCheckOut", this.orderedBooks);
+  //  this.$router.push({path:'/myOrder',query:{orderedBooks: book}});
   }
 }
 </script>

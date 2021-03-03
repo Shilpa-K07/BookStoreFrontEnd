@@ -71,6 +71,7 @@ export default class AddToBag extends Vue {
   private item: any = {};
   private items: any;
   private wishlist: any;
+  private orderList: any;
   beforeMount() {
     this.item = this.$route.query.book;
     if(this.$route.query.books != undefined)
@@ -82,12 +83,27 @@ export default class AddToBag extends Vue {
       this.wishlist = this.$route.query.wishlistBooks;
     else  
       this.wishlist = [];
+    
+    if(this.$route.query.orderedBooks != undefined)
+      this.orderList = this.$route.query.orderedBooks
+    else
+      this.orderList = [];
   }
 
   mounted(){
     if(this.wishlist !=undefined){
       const appBar: any = this.$refs.appBar;
       appBar.setWishlistItems(this.wishlist);
+    }
+
+    if(this.items !=undefined){
+      const appBar: any = this.$refs.appBar;
+      appBar.setBook(this.items);
+    }
+
+    if(this.orderList !=undefined){
+      const appBar: any = this.$refs.appBar;
+      appBar.setOrderedBooks(this.orderList);
     }
   }
   addToCart(){
@@ -103,7 +119,7 @@ export default class AddToBag extends Vue {
   }
 
   goToHome(){
-    this.$router.push({path:'/dashboard',query:{books:this.items, wishlistBooks:this.wishlist}});
+    this.$router.push({path:'/dashboard',query:{books:this.items, wishlistBooks:this.wishlist, orderedBooks: this.orderList}});
   }
 }
 </script>

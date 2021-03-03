@@ -1,5 +1,5 @@
 <template>
-      <v-card class="mx-auto cart-card mt-5" outlined>
+      <v-card class="mx-auto cart-card mt-5" outlined v-show="isShow">
           <v-card-title> Address Details </v-card-title>
           <v-card-text>
         <v-row class="mt-5">
@@ -22,6 +22,9 @@
 import { Prop, Vue, Component } from "vue-property-decorator";
 @Component({})
 export default class AddressDetails extends Vue{
-   
+    @Prop() private isShow: boolean=false;
+    public showDetails = () => {
+        this.isShow = true;
+    }
 }
 </script>

@@ -2,21 +2,21 @@
   <v-app>
     <v-content>
       <v-row>
-        <AppBar />
+        <AppBar ref="appBar"/>
       </v-row>
       <v-row>
         <v-layout row wrap class="mt-5">
           <v-flex xs24 md12>
             <v-row class="mt-10 cart-title">
                 <v-col  class="mt-8">
-              <nuxt-link :to="{ path: 'dashboard', query: {books:this.items, wishlistBooks:this.wishlist, orderedBooks: this.orderList}}">Home</nuxt-link> |
+              <nuxt-link :to="{ path: 'dashboard', query: {books:items, wishlistBooks:wishlist, orderedBooks:orderList}}">Home</nuxt-link> |
               <nuxt-link :to="{ path: 'myWishlist', query: {book: item}}">Book</nuxt-link>
                 </v-col>
             </v-row>
             <v-row>
               <v-card class="mx-auto cart-card" outlined>
-                <v-card-title>My Wishlist</v-card-title>
-                <v-flex v-for="item in wishlist" :key="item.books.title" class="mt-2">
+                <v-card-title>My Order</v-card-title>
+                <v-flex v-for="item in orderList" :key="item.books.title" class="mt-2">
                   <v-layout class="mb-5">
                     <v-flex md2>
                       <v-img class="cart-image ml-5 mt-2" :src="item.books.image"></v-img>
@@ -49,14 +49,14 @@ import AppBar from "../components/AppBar.vue";
     AppBar
   }
 })
-export default class MyWishlist extends Vue {
+export default class MyOrder extends Vue {
   private items: any;
-  private orderList: any;
   private wishlist: any;
+  private orderList: any;
   beforeMount() {
-    this.wishlist = this.$route.query.wishlistBooks;
-    this.items = this.$route.query.books;
     this.orderList = this.$route.query.orderedBooks;
+    this.items = this.$route.query.books;
+    this.wishlist = this.$route.query.wishlistBooks;
   }
 
   mounted() {

@@ -2,7 +2,7 @@
   <v-flex>
     <v-layout row wrap>
       <v-flex v-for="item in items" :key="item.books.title" md3 class="mb-10">
-        <nuxt-link :to="{ path: 'addToBag', query: {book: item, books:cartItems, wishlistBooks:wishlist}}">
+        <nuxt-link :to="{ path: 'addToBag', query: {book: item, books:cartItems, wishlistBooks:wishlist, orderedBooks:orderList}}">
           <v-card class="mx-auto b-card" outlined>
             <v-row class="book-image">
             <v-img class="mx-auto mt-2 mb-2" :src="item.books.image"></v-img>
@@ -28,6 +28,7 @@ export default class Book extends Vue {
   @Prop() private items!: any[];
   @Prop() private cartItems!: any[];
   @Prop() private wishlist!: any[];
+  @Prop() private orderList!: any[];
 
   private lists: Array<object> = [];
   public setBook = (books: any) => {
@@ -40,6 +41,10 @@ export default class Book extends Vue {
 
   public setWishlistItems = (books: any) => {
     this.wishlist = books;
+  }
+
+  public setOrderedBooks = (books: any) => {
+    this.orderList = books;
   }
 }
 </script>

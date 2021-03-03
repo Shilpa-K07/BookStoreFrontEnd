@@ -2,7 +2,7 @@
   <v-app>
     <v-content>
       <v-row>
-        <AppBar />
+        <AppBar ref="appBar"/>
       </v-row>
       <v-row>
         <v-layout row wrap class="mt-5">
@@ -42,10 +42,10 @@
               </v-card>
             </v-row>
             <v-row>
-              <AddressDetails />
+              <AddressDetails ref="addressdetails"/>
             </v-row>
             <v-row>
-              <OrderSummary ref="orderSummary"/>
+              <OrderSummary ref="orderSummary" @onCheckOut="checkOut"/>
             </v-row>
           </v-flex>
         </v-layout>
@@ -67,14 +67,42 @@ import OrderSummary from "../components/OrderSummary.vue";
 })
 export default class MyCart extends Vue {
   private items: any;
+  private wishlist: any;
   private isOrderPlaced: boolean=false;
   private counter_value: number= 1;
+  private orderList: any;
   beforeMount() {
     this.items = this.$route.query.books;
+    if(this.$route.query.orderedBooks != undefined)
+      this.orderList = this.$route.query.orderedBooks
+    else
+      this.orderList = [];
+
+    if(this.$route.query.wishlistBooks != undefined)
+      this.wishlist = this.$route.query.wishlistBooks
+    else
+      this.wishlist = [];
   }
+
+  mounted(){
+    if(this.wishlist !=undefined){
+      const appBar: any = this.$refs.appBar;
+      appBar.setWishlistItems(this.wishlist);
+    }
+
+    if(this.items !=undefined){
+      const appBar: any = this.$refs.appBar;
+      appBar.setBook(this.items);
+    }
+
+    if(this.orderList !=undefined){
+      const appBar: any = this.$refs.appBar;
+      appBar.setOrderedBooks(this.orderList);
+    }
+  }
+
   incrementCounter = () => {
     this.counter_value = (this.counter_value+1);
-    alert(this.counter_value)
     this.emitResult();
   }
   decrementCounter = () => {
@@ -84,10 +112,19 @@ export default class MyCart extends Vue {
   emitResult = ()=> {
     this.$emit('input', this.counter_value)
     }
-  placeOrder = (item: any) => {alert('1')
+  placeOrder = (item: any) => {
+     this.isOrderPlaced = true;
      const orderSummary: any = this.$refs.orderSummary;
      orderSummary.setBook(item);
-     this.isOrderPlaced = true;
+     const addressdetails: any = this.$refs.addressdetails;
+     addressdetails.showDetails();
+  }
+  checkOut(book:any) {
+    this.orderList.push(book);
+    console.log('before remove: '+JSON.stringify(this.items))
+    const filteredItems = this.items.filter((item: any) => item !== book)
+    console.log('after-remove: '+JSON.stringify(filteredItems))
+    this.$router.push({path:'/confirmOrder',query:{books: filteredItems, wishlistBooks:this.wishlist, orderedBooks: this.orderList}});
   }
 }
 </script>

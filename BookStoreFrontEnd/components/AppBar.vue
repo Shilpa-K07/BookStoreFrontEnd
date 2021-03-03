@@ -15,8 +15,9 @@
               <v-spacer />
               <v-col class="d-flex justify-space-around">
                 <v-icon class="ml-5">mdi-account-outline</v-icon>
-                <nuxt-link :to="{ path: 'myWishlist', query: {wishlistBooks: wishlist}}"><v-icon class="mr-8">mdi-heart</v-icon></nuxt-link>
-                <nuxt-link :to="{ path: 'myCart', query: {books: items}}"><v-icon class="mr-8">mdi-cart-outline</v-icon></nuxt-link>
+                <nuxt-link :to="{ path: 'myWishlist', query: {wishlistBooks: wishlist, books: items, orderedBooks: orderList }}"><v-icon class="mr-8">mdi-heart</v-icon></nuxt-link>
+                <nuxt-link :to="{ path: 'myCart', query: {books: items, wishlistBooks: wishlist, orderedBooks: orderList }}"><v-icon class="mr-8">mdi-cart-outline</v-icon></nuxt-link>
+                <nuxt-link :to="{ path: 'myOrder', query: {orderedBooks: orderList, wishlistBooks: wishlist, books: items}}"><v-icon class="mr-8">mdi-view-list</v-icon></nuxt-link>
               </v-col>
             </v-app-bar>
 </template>
@@ -29,15 +30,20 @@ import Component from "vue-class-component";
 })
 export default class AppBar extends Vue {
   private title: string = "BookStore";
-   @Prop() private items!: any[];
+    @Prop() private items!: any[];
     @Prop() private wishlist!: any[];
-   
+    @Prop() private orderList!: any[];
+
    public setBook = (books: any) => {
     this.items = books;
   }
 
   public setWishlistItems = (books: any) => {
     this.wishlist = books;
+  }
+
+  public setOrderedBooks = (books: any) => {
+    this.orderList = books;
   }
 }
 </script>
