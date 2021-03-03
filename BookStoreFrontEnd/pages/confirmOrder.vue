@@ -15,10 +15,30 @@
                   <h3>Order Placed Successfully</h3>
               </v-row>
               <v-row class="mt-5 ml-12" align="center" justify="center">
-                  <pre>               hurray !!!  your order is confirmed
-            the order id is #12345 save the order id for
-                 further communication..</pre>
+                  <pre>      hurray!!! your order is confirmed
+    the order id is #12345 save the order id for
+            further communication..</pre>
               </v-row>
+              <v-row class="mt-15 ml-10" align="center" justify="center"> 
+                <table>
+                    <tbody>
+                        <tr>
+                            <th> Email us</th>
+                            <th> Contact us</th>
+                            <th> Address</th>
+                        </tr>
+
+                        <tr>
+                            <td>admin@bookstore.com</td>
+                            <td>+91 7890654567 </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+             </v-row>
+             <v-row class="mt-15 ml-10" align="center" justify="center">
+                 <v-btn class="continue-shopping" @click="goToHome">Continue Shopping</v-btn>
+            </v-row>
               </v-col>
         </v-layout>
          </v-container>
@@ -37,9 +57,10 @@ import AppBar from "../components/AppBar.vue";
 })
 export default class ConfirmOrder extends Vue {
     private orderList: any;
-     private wishlist: any;
-      private items: any;
-      private orderConfirmImage: any = require('../assets/orderConfirm.png')
+    private wishlist: any;
+    private items: any;
+    private orderConfirmImage: any = require('../assets/orderConfirm.png');
+
     beforeMount(){
         if(this.$route.query.books != undefined)
             this.items = this.$route.query.books;
@@ -72,6 +93,10 @@ export default class ConfirmOrder extends Vue {
       const appBar: any = this.$refs.appBar;
       appBar.setOrderedBooks(this.orderList);
     }
+  }
+
+   goToHome(){
+    this.$router.push({path:'/dashboard',query:{books:this.items, wishlistBooks:this.wishlist, orderedBooks: this.orderList}});
   }
 }
 </script>
