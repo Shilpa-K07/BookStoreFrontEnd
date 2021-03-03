@@ -2,7 +2,7 @@
   <v-app>
     <v-content>
       <v-row>
-        <AppBar />
+        <AppBar ref="appBar"/>
       </v-row>
       <v-row>
         <v-layout row wrap class="mt-5">
@@ -15,7 +15,7 @@
             </v-row>
             <v-row>
               <v-card class="mx-auto cart-card" outlined>
-                <v-card-title>My Wishlist</v-card-title>
+                <v-card-title>{{'My wishlist ('+wishlist.length+')'}}</v-card-title>
                 <v-flex v-for="item in wishlist" :key="item.books.title" class="mt-2">
                   <v-layout class="mb-5">
                     <v-flex md2>

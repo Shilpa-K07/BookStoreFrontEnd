@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-content>
+       <Snackbar ref="snack" />
       <v-row>
         <AppBar ref="appBar"/>
       </v-row>
@@ -36,17 +37,22 @@
               <v-list-item class="description">{{item.books.description}}</v-list-item>
             </v-row>
             <v-divider class="mt-5"/>
-            <v-row class="cust-feedback">
+            <v-row class="cust-feedback mb-5">
               <v-list-item class="mt-5">Customer Feedback</v-list-item>
               <v-card class="mt-5 feedback-cart ml-3" outlined>
-                <h6 class="ml-5 mt-2 mb-2">Overall rating</h6>
+                <h5 class="ml-5 mt-2 mb-2">Overall rating</h5>
                 <v-textarea
                   solo
                   rows="2"
                   label="Write something here"
                   class="ml-5 mr-5"
                 ></v-textarea>
+                <v-row>
+                  <v-col cols="12" md="8"></v-col>
+                  <v-col cols="12" md="4">
                   <v-btn class="cust-feedback-submit mb-5">Submit</v-btn>
+                  </v-col>
+                </v-row>
               </v-card>
               </v-row>
           </v-flex>
@@ -61,10 +67,12 @@
 import { Prop, Vue, Component } from "vue-property-decorator";
 import AppBar from "../components/AppBar.vue";
 import MyCart from "./myCart.vue";
+import Snackbar from "../components/Snackbar.vue";
 @Component({
   components: {
     AppBar,
-    MyCart
+    MyCart,
+    Snackbar
   }
 })
 export default class AddToBag extends Vue {
@@ -72,6 +80,7 @@ export default class AddToBag extends Vue {
   private items: any;
   private wishlist: any;
   private orderList: any;
+  private timeout: number= 2000;
   beforeMount() {
     this.item = this.$route.query.book;
     if(this.$route.query.books != undefined)
@@ -110,12 +119,26 @@ export default class AddToBag extends Vue {
   this.items.push(this.item);
     const appBar: any = this.$refs.appBar;
     appBar.setBook(this.items);
+
+    const child: any = this.$refs.snack;
+    const snackbarData = {
+      text: "added to cart",
+      timeout: this.timeout
+    };
+    child.setSnackbar(snackbarData);
   }
 
   addToWishlist(){
     this.wishlist.push(this.item);
     const appBar: any = this.$refs.appBar;
     appBar.setWishlistItems(this.wishlist);
+
+    const child: any = this.$refs.snack;
+    const snackbarData = {
+      text: "added to wishlist",
+      timeout: this.timeout
+    };
+    child.setSnackbar(snackbarData);
   }
 
   goToHome(){

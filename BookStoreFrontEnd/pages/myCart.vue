@@ -15,7 +15,7 @@
             </v-row>
             <v-row>
               <v-card class="mx-auto cart-card" outlined>
-                <v-card-title>My cart</v-card-title>
+                <v-card-title>{{'My cart ('+items.length+')'}}</v-card-title>
                 <v-flex v-for="item in items" :key="item.books.title" class="mt-2">
                   <v-layout class="mb-5">
                     <v-flex md2>
