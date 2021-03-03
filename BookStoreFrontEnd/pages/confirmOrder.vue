@@ -4,6 +4,25 @@
       <v-row>
         <AppBar ref="appBar" />
       </v-row>
+       <v-row>
+           <v-container grid-list-md text-xs-center>
+        <v-layout row wrap class="mt-9">
+            <v-col>
+            <v-row class="mt-10 ml-10 confirmation-image" align="center" justify="center">
+                  <v-img class="orderConfirmImage mt-10" :src="orderConfirmImage"></v-img>
+            </v-row>
+              <v-row class="mt-2 ml-10" align="center" justify="center">
+                  <h3>Order Placed Successfully</h3>
+              </v-row>
+              <v-row class="mt-5 ml-12" align="center" justify="center">
+                  <pre>               hurray !!!  your order is confirmed
+            the order id is #12345 save the order id for
+                 further communication..</pre>
+              </v-row>
+              </v-col>
+        </v-layout>
+         </v-container>
+       </v-row>
     </v-content>
   </v-app>
 </template>
@@ -20,6 +39,7 @@ export default class ConfirmOrder extends Vue {
     private orderList: any;
      private wishlist: any;
       private items: any;
+      private orderConfirmImage: any = require('../assets/orderConfirm.png')
     beforeMount(){
         if(this.$route.query.books != undefined)
             this.items = this.$route.query.books;
