@@ -9,7 +9,7 @@
           <v-flex xs24 md12>
             <v-row class="mt-10 cart-title">
                 <v-col  class="mt-5">
-              <nuxt-link :to="{ path: 'dashboard', query: {books: items}}">Home</nuxt-link> |
+              <nuxt-link :to="{ path: 'dashboard', query: {books: items, wishlistBooks:this.wishlist, orderedBooks: this.orderList}}">Home</nuxt-link> |
               <nuxt-link :to="{ path: 'myCart', query: {book: item}}">Book</nuxt-link>
                 </v-col>
             </v-row>
@@ -42,7 +42,9 @@
               </v-card>
             </v-row>
             <v-row>
+              <v-form ref="addressForm" class="address-form">
               <AddressDetails ref="addressdetails"/>
+              </v-form>
             </v-row>
             <v-row>
               <OrderSummary ref="orderSummary" @onCheckOut="checkOut"/>
@@ -120,11 +122,11 @@ export default class MyCart extends Vue {
      addressdetails.showDetails();
   }
   checkOut(book:any) {
-    this.orderList.push(book);
-    console.log('before remove: '+JSON.stringify(this.items))
-    const filteredItems = this.items.filter((item: any) => item !== book)
-    console.log('after-remove: '+JSON.stringify(filteredItems))
-    this.$router.push({path:'/confirmOrder',query:{books: filteredItems, wishlistBooks:this.wishlist, orderedBooks: this.orderList}});
+     if ((this.$refs.addressForm as Vue & { validate: () => boolean }).validate()){
+      this.orderList.push(book);
+      const filteredItems = this.items.filter((item: any) => item !== book)
+      this.$router.push({path:'/confirmOrder',query:{books: filteredItems, wishlistBooks:this.wishlist, orderedBooks: this.orderList}});
+    }
   }
 }
 </script>
