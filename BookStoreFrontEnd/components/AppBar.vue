@@ -13,23 +13,28 @@
       @click="changeStyle=true"
     />
     <v-spacer />
-    <v-col class="d-flex justify-space-around">
-      <v-icon class="ml-2">mdi-account-outline</v-icon>
-      <v-badge  class="badge-color" :content="wishListCount">
+    <v-col class="d-flex justify-space-around appbar-icons">
+      <nuxt-link
+          :to="{ path: 'userProfile', query: {wishlistBooks: wishlist, books: items, orderedBooks: orderList }}"
+        >
+      <v-icon class="mr-8">mdi-account-outline</v-icon>
+       </nuxt-link>
+
+      <v-badge color="none" :content="wishListCount">
         <nuxt-link
           :to="{ path: 'myWishlist', query: {wishlistBooks: wishlist, books: items, orderedBooks: orderList }}"
         >
           <v-icon class="mr-8">mdi-heart</v-icon>
         </nuxt-link>
       </v-badge>
-       <v-badge class="badge-color" :content="itemsCount">
+       <v-badge color="none" :content="itemsCount">
       <nuxt-link
         :to="{ path: 'myCart', query: {books: items, wishlistBooks: wishlist, orderedBooks: orderList }}"
       >
         <v-icon class="mr-8">mdi-cart-outline</v-icon>
       </nuxt-link>
       </v-badge>
-      <v-badge class="badge-color" :content="orderListCount">
+      <v-badge color="none" :content="orderListCount">
       <nuxt-link
         :to="{ path: 'myOrder', query: {orderedBooks: orderList, wishlistBooks: wishlist, books: items}}"
       >
