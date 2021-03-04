@@ -20,21 +20,21 @@
       <v-icon class="mr-8">mdi-account-outline</v-icon>
        </nuxt-link>
 
-      <v-badge color="none" :content="wishListCount">
+      <v-badge color="#A03037" :content="wishListCount">
         <nuxt-link
           :to="{ path: 'myWishlist', query: {wishlistBooks: wishlist, books: items, orderedBooks: orderList }}"
         >
           <v-icon class="mr-8">mdi-heart</v-icon>
         </nuxt-link>
       </v-badge>
-       <v-badge color="none" :content="itemsCount">
+       <v-badge color="#A03037" :content="itemsCount">
       <nuxt-link
         :to="{ path: 'myCart', query: {books: items, wishlistBooks: wishlist, orderedBooks: orderList }}"
       >
         <v-icon class="mr-8">mdi-cart-outline</v-icon>
       </nuxt-link>
       </v-badge>
-      <v-badge color="none" :content="orderListCount">
+      <v-badge color="#A03037" :content="orderListCount">
       <nuxt-link
         :to="{ path: 'myOrder', query: {orderedBooks: orderList, wishlistBooks: wishlist, books: items}}"
       >
