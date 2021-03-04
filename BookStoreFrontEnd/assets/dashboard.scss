@@ -33,11 +33,15 @@
     font-size: 20px;
     margin-left: 100px;
 }
+.v-application--is-ltr .v-badge__badge {
+    bottom: calc(74% - 4px)!important;
+    left: calc(42% - 4px)!important;
+    right: auto;
+    top: auto;
+}
 .book-card {
    /*  margin-top: 50px !important;
     margin-left: 120px; */
 }
-/* .book-card .flex.md3 {
-    max-width: 22% !important;
-} */
+
 

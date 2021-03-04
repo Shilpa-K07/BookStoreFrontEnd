@@ -74,7 +74,10 @@ export default class MyCart extends Vue {
   private counter_value: number= 1;
   private orderList: any;
   beforeMount() {
-    this.items = this.$route.query.books;
+    if(this.$route.query.books != undefined)
+      this.items = this.$route.query.books;
+    else
+      this.items = [];
     if(this.$route.query.orderedBooks != undefined)
       this.orderList = this.$route.query.orderedBooks
     else
@@ -89,6 +92,7 @@ export default class MyCart extends Vue {
   mounted(){
     if(this.wishlist !=undefined){
       const appBar: any = this.$refs.appBar;
+      if(this.$refs.appBar != undefined)
       appBar.setWishlistItems(this.wishlist);
     }
 
@@ -99,6 +103,7 @@ export default class MyCart extends Vue {
 
     if(this.orderList !=undefined){
       const appBar: any = this.$refs.appBar;
+       if(this.$refs.appBar != undefined)
       appBar.setOrderedBooks(this.orderList);
     }
   }
