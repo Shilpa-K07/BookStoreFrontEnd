@@ -11,6 +11,7 @@
                         <v-list-item>{{title}}</v-list-item>
                         <v-list-item>{{author}}</v-list-item>
                         <v-list-item>{{'Rs.'+price}}</v-list-item>
+                        <v-list-item class="mt-5">{{'Quantity: '+bookCount}}</v-list-item>
                       </v-row>
                       <v-row class="d-flex place-order">
                         <v-btn class="place-order-btn mr-5" @click="CheckoutOrder">Checkout</v-btn>
@@ -32,7 +33,7 @@ export default class OrderSummary extends Vue{
    @Prop() private showDetails: boolean=false;
   @Prop() private book: any;
   @Prop() private orderedBooks: any;
-
+  @Prop() private bookCount!: number;
   beforeMount() {
      if(this.$route.query.orderedBooks != undefined)
        this.orderedBooks = this.$route.query.orderedBooks;
@@ -45,6 +46,7 @@ export default class OrderSummary extends Vue{
     this.price = book.books.price;
     this.author = book.books.author;
     this.showDetails = true;
+    this.bookCount = book.books.bookCount;
     this.book = book;
   }
 

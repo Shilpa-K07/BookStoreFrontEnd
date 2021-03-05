@@ -12,6 +12,12 @@
         <v-row>
            <Book ref="books" />
         </v-row>
+        <v-row align="center" justify="center">
+          <v-progress-circular
+      indeterminate
+      :class="loading ? 'visible':'hidden'"
+    ></v-progress-circular>
+         </v-row>
         <!-- <v-row class="mt-12">
         <v-col class="mt-12">
        <a @click="nextPage">NextPage >></a>
@@ -38,6 +44,7 @@ import user from "../services/user";
 export default class Dashboard extends Vue {
   private title: string = "BookStore";
   private changeStyle: boolean = false;
+  private loading: boolean = true;
   private timeout: number = 2000;
   //private childBook: any = this.$refs.books;
   private items: any;
@@ -53,12 +60,17 @@ export default class Dashboard extends Vue {
 
   mounted() {
    this.setBooks();
+   /*  setTimeout(() => {
+    this.loading = false;
+  }, 2000); */
+  // this.loading = false;
   }
   getBooks = () => {
     const childSnackBar: any = this.$refs.snack;
     user
       .getBooks()
       .then((data: any) => {
+        this.loading=false;
         const childBook: any = this.$refs.books;
         childBook.setBook(data);
       })

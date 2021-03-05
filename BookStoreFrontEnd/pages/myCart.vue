@@ -71,7 +71,7 @@ export default class MyCart extends Vue {
   private items: any;
   private wishlist: any;
   private isOrderPlaced: boolean=false;
-  private counter_value: number= 1;
+  @Prop() private counter_value!: number;
   private orderList: any;
   beforeMount() {
     if(this.$route.query.books != undefined)
@@ -87,6 +87,7 @@ export default class MyCart extends Vue {
       this.wishlist = this.$route.query.wishlistBooks
     else
       this.wishlist = [];
+    this.counter_value = 1;
   }
 
   mounted(){
@@ -114,6 +115,8 @@ export default class MyCart extends Vue {
   }
   decrementCounter = () => {
     this.counter_value = (this.counter_value-1);
+    if(this.counter_value <= 0 )
+      this.counter_value = 1
     this.emitResult();
   }
   emitResult = ()=> {
@@ -122,6 +125,7 @@ export default class MyCart extends Vue {
   placeOrder = (item: any) => {
      this.isOrderPlaced = true;
      const orderSummary: any = this.$refs.orderSummary;
+     item.books.bookCount = this.counter_value;
      orderSummary.setBook(item);
      const addressdetails: any = this.$refs.addressdetails;
      addressdetails.showDetails();

@@ -26,6 +26,7 @@
                         <v-list-item>{{item.books.title}}</v-list-item>
                         <v-list-item>{{item.books.author}}</v-list-item>
                         <v-list-item>{{'Rs.'+item.books.price}}</v-list-item>
+                         <v-list-item class="mt-5">{{'Quantity: '+item.books.bookCount}}</v-list-item>
                       </v-row>
                     </v-flex>
                   </v-layout>
