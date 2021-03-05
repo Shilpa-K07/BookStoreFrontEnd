@@ -12,6 +12,12 @@
         <v-row>
            <Book ref="books" />
         </v-row>
+        <!-- <v-row class="mt-12">
+        <v-col class="mt-12">
+       <a @click="nextPage">NextPage >></a>
+         <a @click="prevPage">PreviousPage >> </a>
+         </v-col>
+         </v-row> -->
       </v-card>
     </v-content>
   </v-app>

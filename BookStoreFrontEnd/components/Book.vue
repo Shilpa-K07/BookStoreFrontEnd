@@ -1,27 +1,29 @@
 <template>
   <v-flex>
-    <v-layout row wrap>
-      <v-flex v-for="item in paginated_Data" :key="item.books.title" md3 class="mb-10">
-        <nuxt-link
-          :to="{ path: 'addToBag', query: {book: item, books:cartItems, wishlistBooks:wishlist, orderedBooks:orderList}}"
-        >
-          <v-card class="mx-auto b-card" outlined>
-            <v-row class="book-image">
-              <v-img class="mx-auto mt-2 mb-2" :src="item.books.image"></v-img>
-            </v-row>
-            <v-row class="book-content mt-5">
-              <v-list-item class="book-title">{{ item.books.title }}</v-list-item>
-              <v-list-item class="book-author">{{ item.books.author }}</v-list-item>
-              <v-list-item class="book-price mb-5">{{ 'Rs.'+item.books.price }}</v-list-item>
-            </v-row>
-          </v-card>
-        </nuxt-link>
-      </v-flex>
-      <v-row class="mt-12">
-       <v-btn @click="nextPage">NextPage</v-btn>
-         <v-btn @click="prevPage">PreviousPage</v-btn>
-         </v-row>
-    </v-layout>
+    <v-row>
+      <v-layout row wrap>
+        <v-flex v-for="item in paginated_Data" :key="item.books.title" md3 class="mb-10">
+          <nuxt-link
+            :to="{ path: 'addToBag', query: {book: item, books:cartItems, wishlistBooks:wishlist, orderedBooks:orderList}}"
+          >
+            <v-card class="mx-auto b-card" outlined>
+              <v-row class="book-image">
+                <v-img class="mx-auto mt-2 mb-2" :src="item.books.image"></v-img>
+              </v-row>
+              <v-row class="book-content mt-5">
+                <v-list-item class="book-title">{{ item.books.title }}</v-list-item>
+                <v-list-item class="book-author">{{ item.books.author }}</v-list-item>
+                <v-list-item class="book-price mb-5">{{ 'Rs.'+item.books.price }}</v-list-item>
+              </v-row>
+            </v-card>
+          </nuxt-link>
+        </v-flex>
+      </v-layout>
+    </v-row>
+    <v-row align="center" justify="center">
+      <a @click="nextPage" class="mr-5"> Next Page >></a>
+      <a @click="prevPage"> >> Previous Page</a>
+    </v-row>
   </v-flex>
 </template>
 
@@ -43,27 +45,26 @@ export default class Book extends Vue {
 
   nextPage = () => {
     this.pageNumber++;
-    this.paginatedData()
-  }
+    this.paginatedData();
+  };
 
   prevPage = () => {
     this.pageNumber--;
-    this.paginatedData()
-  }
+    this.paginatedData();
+  };
 
   pageCount = () => {
     let length = this.items.length,
       size = this.size;
     this.page_Count = Math.ceil(length / size);
-    this.paginatedData()
-  }
+    this.paginatedData();
+  };
 
   paginatedData = () => {
     const start = this.pageNumber * this.size,
       end = start + this.size;
-    this.paginated_Data= this.items.slice(start, end);
-    alert(this.paginated_Data)
-  }
+    this.paginated_Data = this.items.slice(start, end);
+  };
 
   public setBook = (books: any) => {
     this.items = books.data.data;
