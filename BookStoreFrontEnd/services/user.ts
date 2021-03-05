@@ -9,6 +9,7 @@
 **************************************************************************/
 
 import apiCalls from "../services/apiCalls";
+import header from "../services/header"
 const BASE_URL = process.env.BASE_URL;
 class User {
     // user registration
@@ -30,10 +31,10 @@ class User {
     }
 
     // get books
-    getBooks=() => {
+    getBooks=() => {alert(sessionStorage.token)
         const data = {
             url: BASE_URL+"/book",
-            headers: { 'Content-Type': 'application/json', 'token': sessionStorage.token } 
+            headers:  { 'Content-Type': header.contentType, 'token': header.token } 
         }
         return apiCalls.get(data)
     }
