@@ -9,7 +9,7 @@
 **************************************************************************/
 
 import apiCalls from "../services/apiCalls";
-import header from "../services/header"
+//import header from "../services/header"
 const BASE_URL = process.env.BASE_URL;
 class User {
     // user registration
@@ -31,10 +31,13 @@ class User {
     }
 
     // get books
-    getBooks=() => {alert(sessionStorage.token)
+    getBooks=() => {
         const data = {
             url: BASE_URL+"/book",
-            headers:  { 'Content-Type': header.contentType, 'token': header.token } 
+            headers:  {
+                'Content-Type': 'application/json',  
+                    'token': sessionStorage.token
+            }/* { 'Content-Type': header.contentType, 'token': header.token } */ 
         }
         return apiCalls.get(data)
     }

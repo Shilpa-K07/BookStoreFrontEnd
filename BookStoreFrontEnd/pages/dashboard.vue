@@ -9,21 +9,12 @@
           </v-col>
         </v-row>
         <v-row class="book-main-title mb-8">Books</v-row>
-        <v-row>
+         <v-row>
            <Book ref="books" />
         </v-row>
-        <v-row align="center" justify="center">
-          <v-progress-circular
-      indeterminate
-      :class="loading ? 'visible':'hidden'"
-    ></v-progress-circular>
-         </v-row>
-        <!-- <v-row class="mt-12">
-        <v-col class="mt-12">
-       <a @click="nextPage">NextPage >></a>
-         <a @click="prevPage">PreviousPage >> </a>
-         </v-col>
-         </v-row> -->
+        <v-row>
+          <ProgressBar ref="progressBar" />
+        </v-row>
       </v-card>
     </v-content>
   </v-app>
@@ -32,18 +23,23 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
+import { Prop } from "vue-property-decorator";
 import Book from "../components/Book.vue";
 import AppBar from "../components/AppBar.vue";
+import ProgressBar from "../components/ProgressBar.vue"
 import user from "../services/user";
 @Component({
   components: {
     Book,
-    AppBar
+    AppBar,
+    ProgressBar
   }
 })
 export default class Dashboard extends Vue {
   private title: string = "BookStore";
   private changeStyle: boolean = false;
+   private loadingImage: any = require('../assets/loading-buffering.gif');
+  //@Prop() private loading: boolean = true;
   private loading: boolean = true;
   private timeout: number = 2000;
   //private childBook: any = this.$refs.books;
@@ -60,17 +56,14 @@ export default class Dashboard extends Vue {
 
   mounted() {
    this.setBooks();
-   /*  setTimeout(() => {
-    this.loading = false;
-  }, 2000); */
-  // this.loading = false;
+   const progressBar: any = this.$refs.progressBar;
+   progressBar.hideImage();
   }
   getBooks = () => {
     const childSnackBar: any = this.$refs.snack;
     user
       .getBooks()
       .then((data: any) => {
-        this.loading=false;
         const childBook: any = this.$refs.books;
         childBook.setBook(data);
       })
@@ -79,7 +72,6 @@ export default class Dashboard extends Vue {
           text: "Some error occurred",
           timeout: this.timeout
         };
-        //childSnackBar.setSnackbar(snackbarData);
       });
   }
 

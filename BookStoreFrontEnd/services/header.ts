@@ -10,5 +10,5 @@ class Header {
       this.token = token;
     }
 }
-let header = new Header(sessionStorage.token);
-export default header;
+//let header = new Header(sessionStorage.token);
+//export default header;
