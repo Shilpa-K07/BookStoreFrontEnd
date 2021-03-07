@@ -21,9 +21,6 @@
 </template>
 
 <script lang="ts">
-/* import Vue from "vue";
-import Component from "vue-class-component";
-import { Prop } from "vue-property-decorator"; */
 import { Prop, Vue, Component } from "vue-property-decorator";
 import Book from "../components/Book.vue";
 import AppBar from "../components/AppBar.vue";
@@ -95,6 +92,8 @@ export default class Dashboard extends Vue {
     const filteredBook: any[] = [];
     const childBook: any = this.$refs.books;
     if (searchData != undefined ) {
+      searchData= searchData[0].toUpperCase() +  
+            searchData.slice(1); 
       this.books.forEach(function(value: any) {
         if (value.books.title.includes(searchData)) {
           filteredBook.push(value);

@@ -18,8 +18,8 @@
               </v-card>
             </v-row>
             <v-row class="d-flex">
-              <v-btn class="notify-me-btn mt-5" @click="addToCart">Add to bag</v-btn>
-              <v-btn class="wish-list-btn mt-5" @click="addToWishlist"><v-icon class="mr-2">mdi-heart</v-icon>wishlist</v-btn>
+              <v-btn  class="notify-me-btn mt-5" @click="addToCart" :disabled="isAddedToCart">Add to bag</v-btn>
+              <v-btn  class="wish-list-btn mt-5" @click="addToWishlist" :disabled="isWishlisted"><v-icon class="mr-2">mdi-heart</v-icon>wishlist</v-btn>
             </v-row>
           </v-flex>
           <v-flex xs12 md6 class="book-description">
@@ -81,6 +81,8 @@ export default class AddToBag extends Vue {
   private wishlist: any;
   private orderList: any;
   private timeout: number= 2000;
+  private isAddedToCart: boolean=false;
+  private isWishlisted: boolean=false;
   beforeMount() {
     this.item = this.$route.query.book;
     if(this.$route.query.books != undefined)
@@ -115,6 +117,22 @@ export default class AddToBag extends Vue {
       appBar.setOrderedBooks(this.orderList);
     }
   }
+  updated () {
+    if(this.wishlist !=undefined){
+      const appBar: any = this.$refs.appBar;
+      appBar.setWishlistItems(this.wishlist);
+    }
+
+    if(this.items !=undefined){
+      const appBar: any = this.$refs.appBar;
+      appBar.setBook(this.items);
+    }
+
+    if(this.orderList !=undefined){
+      const appBar: any = this.$refs.appBar;
+      appBar.setOrderedBooks(this.orderList);
+    }
+  }
   addToCart(){
   this.items.push(this.item);
     const appBar: any = this.$refs.appBar;
@@ -126,6 +144,9 @@ export default class AddToBag extends Vue {
       timeout: this.timeout
     };
     child.setSnackbar(snackbarData);
+    setTimeout(()=>{
+      this.isAddedToCart = true;
+    }, 1000)
   }
 
   addToWishlist(){
@@ -139,6 +160,9 @@ export default class AddToBag extends Vue {
       timeout: this.timeout
     };
     child.setSnackbar(snackbarData);
+     setTimeout(()=>{
+      this.isWishlisted = true;
+    }, 1000)
   }
 
   goToHome(){

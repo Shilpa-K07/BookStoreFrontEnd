@@ -61,7 +61,7 @@ export default class AppBar extends Vue {
   @Prop() private orderListCount!: number;
   @Prop() private itemsCount!: number;
   @Prop() private searchdata!: string;
-  public setBook = (books: any) => {
+  public setBook = (books: any) => { 
     this.items = books;
     if(this.items != undefined)
     this.itemsCount = this.items.length;
