@@ -2,16 +2,18 @@
   <v-app>
     <v-content>
       <v-row>
-        <AppBar ref="appBar"/>
+        <AppBar ref="appBar" />
       </v-row>
       <v-row>
         <v-layout row wrap class="mt-5">
           <v-flex xs24 md12>
             <v-row class="mt-10 cart-title">
-                <v-col  class="mt-5">
-              <nuxt-link :to="{ path: 'dashboard', query: {books: items, wishlistBooks:this.wishlist, orderedBooks: this.orderList}}">Home</nuxt-link> |
-              <nuxt-link :to="{ path: 'myCart', query: {book: item}}">Book</nuxt-link>
-                </v-col>
+              <v-col class="mt-5">
+                <nuxt-link
+                  :to="{ path: 'dashboard', query: {books: items, wishlistBooks:this.wishlist, orderedBooks: this.orderList}}"
+                >Home</nuxt-link>|
+                <nuxt-link :to="{ path: 'myCart', query: {book: item}}">Book</nuxt-link>
+              </v-col>
             </v-row>
             <v-row>
               <v-card class="mx-auto cart-card" outlined>
@@ -28,26 +30,32 @@
                         <v-list-item>{{'Rs.'+item.books.price}}</v-list-item>
                       </v-row>
                       <v-row class="counter">
-                        <v-icon class="counter-minus" @click="decrementCounter">mdi-minus-circle-outline</v-icon>
-                        <v-text-field dense outlined v-model="counter_value" class="counter-field"></v-text-field>
-                        <v-icon class="counter-plus" @click="incrementCounter">mdi-plus-circle-outline</v-icon>
-                        </v-row>
+                        <v-icon
+                          class="counter-minus"
+                          @click="decrementCounter(item)"
+                        >mdi-minus-circle-outline</v-icon>
+                        <v-text-field dense outlined v-model="item.counter" class="counter-field"></v-text-field>
+                        <v-icon
+                          class="counter-plus"
+                          @click="incrementCounter(item)"
+                        >mdi-plus-circle-outline</v-icon>
+                      </v-row>
                       <v-row class="d-flex place-order">
                         <v-btn class="place-order-btn mr-5" @click="placeOrder(item)">Place order</v-btn>
                       </v-row>
                     </v-flex>
                   </v-layout>
-                   <v-divider class="mt-5"/>
+                  <v-divider class="mt-5" />
                 </v-flex>
               </v-card>
             </v-row>
             <v-row>
               <v-form ref="addressForm" class="address-form">
-              <AddressDetails ref="addressdetails"/>
+                <AddressDetails ref="addressdetails" />
               </v-form>
             </v-row>
             <v-row>
-              <OrderSummary ref="orderSummary" @onCheckOut="checkOut"/>
+              <OrderSummary ref="orderSummary" @onCheckOut="checkOut" />
             </v-row>
           </v-flex>
         </v-layout>
@@ -70,71 +78,86 @@ import OrderSummary from "../components/OrderSummary.vue";
 export default class MyCart extends Vue {
   private items: any;
   private wishlist: any;
-  private isOrderPlaced: boolean=false;
+  private isOrderPlaced: boolean = false;
   @Prop() private counter_value!: number;
   private orderList: any;
   beforeMount() {
-    if(this.$route.query.books != undefined)
-      this.items = this.$route.query.books;
-    else
+    if (this.$route.query.books != undefined){
+       this.items = this.$route.query.books;
+       this.items.forEach(function(value: any) {
+        value.counter = 1;
+      });
+    }
+    else 
       this.items = [];
-    if(this.$route.query.orderedBooks != undefined)
-      this.orderList = this.$route.query.orderedBooks
-    else
-      this.orderList = [];
 
-    if(this.$route.query.wishlistBooks != undefined)
-      this.wishlist = this.$route.query.wishlistBooks
-    else
-      this.wishlist = [];
+    if (this.$route.query.orderedBooks != undefined)
+      this.orderList = this.$route.query.orderedBooks;
+    else this.orderList = [];
+
+    if (this.$route.query.wishlistBooks != undefined)
+      this.wishlist = this.$route.query.wishlistBooks;
+    else this.wishlist = [];
     this.counter_value = 1;
   }
 
-  mounted(){
-    if(this.wishlist !=undefined){
+  mounted() {
+    if (this.wishlist != undefined) {
       const appBar: any = this.$refs.appBar;
-      if(this.$refs.appBar != undefined)
-      appBar.setWishlistItems(this.wishlist);
+      if (this.$refs.appBar != undefined)
+        appBar.setWishlistItems(this.wishlist);
     }
 
-    if(this.items !=undefined){
+    if (this.items != undefined) {
       const appBar: any = this.$refs.appBar;
       appBar.setBook(this.items);
     }
 
-    if(this.orderList !=undefined){
+    if (this.orderList != undefined) {
       const appBar: any = this.$refs.appBar;
-       if(this.$refs.appBar != undefined)
-      appBar.setOrderedBooks(this.orderList);
+      if (this.$refs.appBar != undefined)
+        appBar.setOrderedBooks(this.orderList);
     }
   }
 
-  incrementCounter = () => {
-    this.counter_value = (this.counter_value+1);
-    this.emitResult();
-  }
-  decrementCounter = () => {
-    this.counter_value = (this.counter_value-1);
+  incrementCounter = (item: any) => {
+      item.counter = item.counter + 1;
+      this.emitResult();
+  };
+  decrementCounter = (item: any) => {
+    /*   this.counter_value = (this.counter_value-1);
     if(this.counter_value <= 0 )
-      this.counter_value = 1
-    this.emitResult();
-  }
-  emitResult = ()=> {
-    this.$emit('input', this.counter_value)
-    }
+      this.counter_value = 1 */
+      item.counter = item.counter - 1;
+      if (item.counter <= 0) 
+        item.counter = 1;
+      this.emitResult();
+  };
+  emitResult = () => {
+    this.$emit("input", this.counter_value);
+  };
   placeOrder = (item: any) => {
-     this.isOrderPlaced = true;
-     const orderSummary: any = this.$refs.orderSummary;
-     item.books.bookCount = this.counter_value;
-     orderSummary.setBook(item);
-     const addressdetails: any = this.$refs.addressdetails;
-     addressdetails.showDetails();
-  }
-  checkOut(book:any) {
-     if ((this.$refs.addressForm as Vue & { validate: () => boolean }).validate()){
+    this.isOrderPlaced = true;
+    const orderSummary: any = this.$refs.orderSummary;
+    item.books.bookCount = this.counter_value;
+    orderSummary.setBook(item);
+    const addressdetails: any = this.$refs.addressdetails;
+    addressdetails.showDetails();
+  };
+  checkOut(book: any) {
+    if (
+      (this.$refs.addressForm as Vue & { validate: () => boolean }).validate()
+    ) {
       this.orderList.push(book);
-      const filteredItems = this.items.filter((item: any) => item !== book)
-      this.$router.push({path:'/confirmOrder',query:{books: filteredItems, wishlistBooks:this.wishlist, orderedBooks: this.orderList}});
+      const filteredItems = this.items.filter((item: any) => item !== book);
+      this.$router.push({
+        path: "/confirmOrder",
+        query: {
+          books: filteredItems,
+          wishlistBooks: this.wishlist,
+          orderedBooks: this.orderList
+        }
+      });
     }
   }
 }
