@@ -3,6 +3,7 @@
     <v-icon class="ml-9 mr-2">mdi-book-open-variant</v-icon>
     <v-toolbar-title class>{{title}}</v-toolbar-title>
     <v-text-field
+      v-model="searchdata"
       v-click-outside="changeStyle=false"
       label="Search"
       prepend-inner-icon="mdi-magnify"
@@ -11,6 +12,7 @@
       filled
       dense
       @click="changeStyle=true"
+      @mouseout="filterBooks"
     />
     <v-spacer />
     <v-col class="d-flex justify-space-around appbar-icons">
@@ -58,6 +60,7 @@ export default class AppBar extends Vue {
   @Prop() private wishListCount!: number;
   @Prop() private orderListCount!: number;
   @Prop() private itemsCount!: number;
+  @Prop() private searchdata!: string;
   public setBook = (books: any) => {
     this.items = books;
     if(this.items != undefined)
@@ -75,6 +78,10 @@ export default class AppBar extends Vue {
     if(this.orderList != undefined)
     this.orderListCount = this.orderList.length;
   };
+
+  public filterBooks = () => {
+     this.$emit("onSearch", this.searchdata);
+  }
 }
 </script>
 

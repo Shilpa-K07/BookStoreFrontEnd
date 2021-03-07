@@ -71,6 +71,10 @@ export default class Book extends Vue {
     this.paginatedData();
   };
 
+  public setBookData = (books: any) => {
+    this.items = books;
+    this.paginatedData();
+  }
   public setCartItems = (books: any) => {
     this.cartItems = books;
   };
