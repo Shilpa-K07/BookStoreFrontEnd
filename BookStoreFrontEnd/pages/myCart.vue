@@ -122,19 +122,11 @@ export default class MyCart extends Vue {
 
   incrementCounter = (item: any) => {
       item.counter = item.counter + 1;
-      this.emitResult();
   };
   decrementCounter = (item: any) => {
-    /*   this.counter_value = (this.counter_value-1);
-    if(this.counter_value <= 0 )
-      this.counter_value = 1 */
       item.counter = item.counter - 1;
       if (item.counter <= 0) 
         item.counter = 1;
-      this.emitResult();
-  };
-  emitResult = () => {
-    this.$emit("input", this.counter_value);
   };
   placeOrder = (item: any) => {
     this.isOrderPlaced = true;

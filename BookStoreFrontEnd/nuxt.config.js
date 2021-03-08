@@ -22,7 +22,9 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/dashboard.scss',
-    '@/assets/registration.scss'
+    '@/assets/registration.scss',
+    '@/assets/myCart.scss',
+    '@/assets/book.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

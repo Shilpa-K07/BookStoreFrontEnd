@@ -37,10 +37,8 @@ export default class Dashboard extends Vue {
   private title: string = "BookStore";
   private changeStyle: boolean = false;
   private loadingImage: any = require("../assets/loading-buffering.gif");
-  //@Prop() private loading: boolean = true;
   private loading: boolean = true;
   private timeout: number = 2000;
-  //private childBook: any = this.$refs.books;
   private items: any;
   private cartItems: any;
   private wishlist: any;
@@ -91,7 +89,7 @@ export default class Dashboard extends Vue {
   filterBooks = (searchData: any) => {
     const filteredBook: any[] = [];
     const childBook: any = this.$refs.books;
-    if (searchData != undefined ) {
+    if (searchData != undefined && searchData != "") {
       searchData= searchData[0].toUpperCase() +  
             searchData.slice(1); 
       this.books.forEach(function(value: any) {

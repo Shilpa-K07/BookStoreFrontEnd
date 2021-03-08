@@ -1,3 +1,4 @@
+@import './variables.scss';
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -39,8 +40,8 @@
     justify-content: flex-end;
 }
 .place-order-btn {
-  color: white !important;
-  background-color: #3371B5 !important;
+  color: $whiteColor !important;
+  background-color: $skyBlue !important;
   width: 150px !important;
 }
 .orderConfirmImage {
@@ -55,23 +56,23 @@ table {
   border-spacing: 3px;
 }
 table tr td{
-  border: 1px solid #9c9595;
+  border: 1px solid $grey;
   width: 210px;
   height: 60px;
   text-align: center;
 }
 table{
-  border: 1px solid #9c9595;
+  border: 1px solid $grey;
   border-spacing: 5px;
 }
 table tr th {
   font-weight: 400;
   height: 30px;
-  background-color: #DCDCDC;
+  background-color: $lightGrey;
 }
 .continue-shopping {
-  color: white !important;
-  background-color: #3371B5 !important;
+  color: $whiteColor !important;
+  background-color: $skyBlue !important;
 }
 .address-form {
   width: 100%;
