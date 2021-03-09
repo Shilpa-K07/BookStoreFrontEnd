@@ -1,4 +1,5 @@
 @import '../variables.scss';
+@import './constants.scss';
 .card-height-width {
     width: 260px !important;
     height: 380px;
@@ -6,5 +7,5 @@
 .register-login-btn {
     color: $whiteColor !important;
     background-color: $darkGrey !important;
-    width: 100% !important;
+    width: $full-width !important;
   }

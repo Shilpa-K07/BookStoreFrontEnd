@@ -1,4 +1,6 @@
 @import '../variables.scss';
+@import './constants.scss';
+
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -66,7 +68,7 @@ table{
   border-spacing: 5px;
 }
 table tr th {
-  font-weight: 400;
+  font-weight: $font-weight-fourhundred;
   height: 30px;
   background-color: $lightGrey;
 }
@@ -75,5 +77,5 @@ table tr th {
   background-color: $skyBlue !important;
 }
 .address-form {
-  width: 100%;
+  width: $full-width;
 }

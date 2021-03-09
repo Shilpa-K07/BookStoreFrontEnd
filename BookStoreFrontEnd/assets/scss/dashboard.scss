@@ -1,10 +1,11 @@
 @import '../variables.scss';
+@import './constants.scss';
 *{
     font-family: Arial, Helvetica, sans-serif;
 }
 .main-card {
     height: 100%;
-    width: 100%
+    width: $full-width;
 }
 .search-text-style.v-text-field.v-text-field--solo:not(.v-text-field--solo-flat) > .v-input__control > .v-input__slot {
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
@@ -19,7 +20,7 @@
     margin-left: 100px
 }
 .v-toolbar__title {
-    font-size: 18px;
+    font-size: $font-size-eighteen;
 }
 
 .app-bar .theme--light.v-icon {
@@ -31,7 +32,7 @@
 }
 .book-main-title {
     margin-top: 90px !important;
-    font-size: 20px;
+    font-size: $font-size-twenty;
     margin-left: 100px;
 }
 .v-application--is-ltr .v-badge__badge {
