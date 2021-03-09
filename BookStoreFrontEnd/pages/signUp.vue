@@ -139,5 +139,5 @@ export default class SignUp extends Vue {
 }
 </script>
 <style lang="scss">
-@import url("../assets/registration.scss");
+@import url("../assets/scss/registration.scss");
 </style>

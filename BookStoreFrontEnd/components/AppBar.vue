@@ -86,5 +86,5 @@ export default class AppBar extends Vue {
 </script>
 
 <style lang="scss">
-@import url("../assets/dashboard.scss");
+@import url("../assets/scss/dashboard.scss");
 </style>

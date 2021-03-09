@@ -59,7 +59,7 @@ export default class ConfirmOrder extends Vue {
     private orderList: any;
     private wishlist: any;
     private items: any;
-    private orderConfirmImage: any = require('../assets/orderConfirm.png');
+    private orderConfirmImage: any = require('../assets/images/orderConfirm.png');
 
     beforeMount(){
         if(this.$route.query.books != undefined)

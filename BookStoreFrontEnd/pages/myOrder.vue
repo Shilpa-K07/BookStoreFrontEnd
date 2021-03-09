@@ -78,5 +78,5 @@ export default class MyOrder extends Vue {
 </script>
 
 <style lang="scss">
-@import url("../assets/myCart.scss");
+@import url("../assets/scss/myCart.scss");
 </style>

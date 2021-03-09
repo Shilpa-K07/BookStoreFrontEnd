@@ -172,5 +172,5 @@ export default class AddToBag extends Vue {
 </script>
 
 <style lang="scss">
-@import url("../assets/book.scss");
+@import url("../assets/scss/book.scss");
 </style>

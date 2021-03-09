@@ -90,5 +90,5 @@ export default class Book extends Vue {
 </script>
 
 <style lang="scss">
-@import url("../assets/book.scss");
+@import url("../assets/scss/book.scss");
 </style>
