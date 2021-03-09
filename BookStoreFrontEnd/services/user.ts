@@ -8,7 +8,7 @@
 *
 **************************************************************************/
 
-import apiCalls from "../services/apiCalls";
+import apiCalls from '../services/apiCalls';
 //import header from "../services/header"
 const BASE_URL = process.env.BASE_URL;
 class User {
@@ -16,30 +16,30 @@ class User {
     register=(userInput: any) => {
         const data = {
             input: userInput,
-            url: BASE_URL+"/registration"
-        }
-        return apiCalls.post(data)
+            url: BASE_URL+'/registration'
+        };
+        return apiCalls.post(data);
     }
 
     // user login
     login=(userInput: any) => {
         const data = {
             input: userInput,
-            url: BASE_URL+"/userLogin"
-        }
-        return apiCalls.post(data)
+            url: BASE_URL+'/userLogin'
+        };
+        return apiCalls.post(data);
     }
 
     // get books
     getBooks=() => {
         const data = {
-            url: BASE_URL+"/book",
+            url: BASE_URL+'/book',
             headers:  {
                 'Content-Type': 'application/json',  
                     'token': sessionStorage.token
             }/* { 'Content-Type': header.contentType, 'token': header.token } */ 
-        }
-        return apiCalls.get(data)
+        };
+        return apiCalls.get(data);
     }
 }
 

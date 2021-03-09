@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "nuxt-ts build",
-    "lint": "vue-cli-service lint",
+    "lint": "eslint --ext .ts,.js,.vue .",
     "dev": "nuxt-ts",
     "generate": "nuxt-ts generate",
     "start": "nuxt-ts start",
@@ -17,6 +17,7 @@
     "@types/jest": "^26.0.20",
     "@types/vuelidate": "^0.7.13",
     "axios": "^0.21.1",
+    "babel-eslint": "^10.1.0",
     "core-js": "^3.8.3",
     "nuxt": "^2.14.12",
     "sass-loader": "^10.1.1",
