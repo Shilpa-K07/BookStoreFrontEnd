@@ -16,7 +16,8 @@ module.exports = {
         'sourceType': 'module',
         'ecmaFeatures': {
             'jsx': true,
-            'modules': true
+            'modules': true,
+            legacyDecorators: true
         }
     },
   rules: {
@@ -27,5 +28,6 @@ module.exports = {
 		semi: ['error', 'always'],
 		'no-mixed-spaces-and-tabs': 'error',
 		'no-unused-vars': ['error', { 'vars': 'all', 'args': 'none'}]
-  }
+  },
+  ignorePatterns: ['./node_modules/', './nuxt/*', './test/*', './.git/*'],
 }

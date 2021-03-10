@@ -1,7 +1,10 @@
 <template>
   <v-app-bar fixed elevate-on-scroll class="app-bar">
-    <v-icon class="ml-9 mr-2">mdi-book-open-variant</v-icon>
-    <v-toolbar-title class>{{title}}</v-toolbar-title>
+    <v-col  class="d-flex justify-space-between">
+    <v-icon >mdi-book-open-variant</v-icon>
+    <v-toolbar-title>{{title}}</v-toolbar-title>
+    </v-col>
+    <v-col cols="12" md="6">
     <v-text-field
       v-model="searchdata"
       v-click-outside="changeStyle=false"
@@ -14,6 +17,7 @@
       @click="changeStyle=true"
       @mouseout="filterBooks"
     />
+    </v-col>
     <v-spacer />
     <v-col class="d-flex justify-space-around appbar-icons">
       <nuxt-link
