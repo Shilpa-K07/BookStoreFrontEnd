@@ -3,6 +3,9 @@
 *{
     font-family: Arial, Helvetica, sans-serif;
 }
+$small: 360px;
+$medium: 375px;
+$large: 1331px;
 .b-card {
     width: 200px;
     word-break: break-word;
@@ -46,8 +49,18 @@
 .book-item-title {
     font-size: $font-size-seventeen;
     margin-top: 120px !important;
-    margin-left: 187px;
+    @media screen and (min-width: $small) {
+        margin-left: 32px !important;
+      }
+    @media screen and (min-width: $medium) {
+        margin-left: 35px !important;
+      }
+      @media screen and (min-width: $large) {
+        margin-left: 187px !important;
+      }
+    //margin-left: 187px;
 }
+
 .book-item-image {
     height: 270px;
     width: 200px;
@@ -56,7 +69,16 @@
     color: $whiteColor !important;
     background-color: $darkGrey!important;
     width: 125px !important;
-    margin-left: 222px;
+    @media screen and (min-width: $small) {
+        margin-left: 65px !important;
+      }
+    @media screen and (min-width: $medium) {
+        margin-left: 72px !important;
+      }
+      @media screen and (min-width: $large) {
+        margin-left: 222px !important;
+      }
+    //margin-left: 222px;
   }
 .wish-list-btn {
     color: $whiteColor !important;

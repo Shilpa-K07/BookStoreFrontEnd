@@ -1,7 +1,7 @@
 <template>
   <v-app-bar fixed elevate-on-scroll class="app-bar">
-    <v-col  class="d-flex justify-space-between">
-    <v-icon >mdi-book-open-variant</v-icon>
+    <v-col class="d-flex justify-space-around">
+    <v-icon class="ml-4">mdi-book-open-variant</v-icon>
     <v-toolbar-title>{{title}}</v-toolbar-title>
     </v-col>
     <v-col cols="12" md="6">

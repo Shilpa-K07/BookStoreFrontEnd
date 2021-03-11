@@ -5,6 +5,7 @@
       <v-row>
         <AppBar ref="appBar"/>
       </v-row>
+      <v-col>
       <v-row class="book-item-title mb-2">
         <a @click="goToHome">Home</a> |
         <nuxt-link :to="{ path: 'addToBag', query: {book: item}}">Book</nuxt-link>
@@ -59,6 +60,7 @@
           <MyCart ref="mycart" v-show="false"/>
         </v-layout>
       </v-row>
+      </v-col>
     </v-content>
   </v-app>
 </template>
