@@ -5,7 +5,16 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 .cart-card {
-    width: 50%;
+    
+    @media screen and (min-width: $small) {
+      width: 60% !important;
+    }
+  @media screen and (min-width: $medium) {
+    width: 60% !important;
+    }
+    @media screen and (min-width: $large) {
+      width: 50% !important;
+    }
 }
 .cart-image {
     height: 120px;
@@ -15,7 +24,15 @@
     min-height: 25px !important;
 }
 .cart-title {
-    margin-left: 330px;
+     @media screen and (min-width: $small) {
+        margin-left: 68px !important;
+      }
+    @media screen and (min-width: $medium) {
+        margin-left: 68px !important;
+      }
+      @media screen and (min-width: $large) {
+        margin-left: 330px !important;
+      }
 }
 .counter-field {
      
@@ -36,7 +53,15 @@
   margin-right: 10px;
 }
 .counter-plus{
-  margin-right: 450px;
+  @media screen and (min-width: $small) {
+    margin-right: 25px !important;
+    }
+  @media screen and (min-width: $medium) {
+    margin-right: 25px !important;
+    }
+    @media screen and (min-width: $large) {
+      margin-right: 450px !important;
+    }
 }
 .place-order{
     justify-content: flex-end;
