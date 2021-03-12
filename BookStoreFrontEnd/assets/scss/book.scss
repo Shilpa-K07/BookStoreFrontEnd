@@ -76,7 +76,7 @@ $large: 1331px;
         margin-left: 72px !important;
       }
       @media screen and (min-width: $large) {
-        margin-left: 222px !important;
+        margin-left: 206px !important;
       }
     //margin-left: 222px;
   }
@@ -104,7 +104,18 @@ $large: 1331px;
     min-height: 25px !important;
 }
 .book-description {
-    margin-left: -150px;
+    
+    @media screen and (min-width: $small) {
+        margin-left: 52px !important;
+        margin-top: 60px !important;
+      }
+    @media screen and (min-width: $medium) {
+        margin-left: 52px !important;
+        margin-top: 60px !important;
+      }
+      @media screen and (min-width: $large) {
+        margin-left: -150px !important;
+      }
 }
 .add-bag-book-description {
     color: $greyish !important;
@@ -126,4 +137,13 @@ $large: 1331px;
     color: $whiteColor !important;
     background-color: $skyBlue !important;
     width: 125px !important;
+      @media screen and (min-width: $small) {
+        margin-left: 235px !important;
+      }
+    @media screen and (min-width: $medium) {
+        margin-left: 235px !important;
+      }
+      @media screen and (min-width: $large) {
+        margin-left: 0px !important;
+      }
   }

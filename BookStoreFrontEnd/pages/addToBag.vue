@@ -12,7 +12,7 @@
         </v-row>
       <v-row>
         <v-layout row wrap class="mt-5">
-          <v-flex xs12 md6>
+          <v-flex xs12 sm6 md6>
             <v-row>
               <v-card class="mx-auto book-wishlist-card" outlined>
                 <v-img class="mx-auto book-item-image mt-4" :src="item.books.image"></v-img>
@@ -23,7 +23,7 @@
               <v-btn  class="wish-list-btn mt-5" @click="addToWishlist" :disabled="isWishlisted"><v-icon class="mr-2">mdi-heart</v-icon>wishlist</v-btn>
             </v-row>
           </v-flex>
-          <v-flex xs12 md6 class="book-description">
+          <v-flex xs12 sm6 md6 class="book-description">
             <v-row class="book-details">
             <v-list-item class="add-bag-book-title">{{item.books.title}}</v-list-item>
             <v-list-item class="add-bag-book-author">{{item.books.author}}</v-list-item>
