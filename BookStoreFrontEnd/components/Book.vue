@@ -1,8 +1,8 @@
 <template>
   <v-flex>
-    <v-row>
+    <v-row class="book-size">
       <v-layout row wrap>
-        <v-flex v-for="item in paginated_Data" :key="item.books.title" md3 class="mb-10">
+        <v-flex v-for="item in paginated_Data" :key="item.books.title" md3 xs4 class="mb-10">
           <nuxt-link
             :to="{ path: 'addToBag', query: {book: item, books:cartItems, wishlistBooks:wishlist, orderedBooks:orderList}}"
           >

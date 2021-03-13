@@ -2,7 +2,7 @@
   <v-app>
     <v-content>
       <Snackbar ref="snack" />
-      <v-card class="mx-auto main-card" outlined>
+      <!-- <v-card class="mx-auto main-card" outlined> -->
         <v-row>
           <v-col>
             <AppBar ref="appBar" @onSearch="filterBooks" />
@@ -15,7 +15,7 @@
         <v-row>
           <ProgressBar ref="progressBar" />
         </v-row>
-      </v-card>
+    <!--   </v-card> -->
     </v-content>
   </v-app>
 </template>

@@ -144,3 +144,21 @@
         margin-left: 0px !important;
       }
   }
+.book-size .flex.md3 {
+  @media screen and (min-width: $small) {
+    margin-left: 63px;
+    margin-right: -40px;
+  }
+  @media screen and (min-width: $medium) {
+    margin-left: 63px;
+    margin-right: -40px;
+  }
+  @media screen and (min-width: $large) {
+    margin-left: 50px;
+    margin-right: -85px;
+  }
+}
+.flex.md3 {
+  margin-left: 63px;
+  margin-right: -40px;
+}
