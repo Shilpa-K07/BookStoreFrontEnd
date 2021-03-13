@@ -74,3 +74,14 @@
 .progress-bar {
     color: $skyBlue;
 }
+.form-details {
+    @media screen and (min-width: $small) {
+        margin-left: 20px !important;
+      }
+    @media screen and (min-width: $medium) {
+        margin-left: 20px !important;
+      }
+      @media screen and (min-width: $large) {
+        margin-left: 0px !important;
+      }
+}

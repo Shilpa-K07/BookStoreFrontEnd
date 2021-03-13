@@ -16,9 +16,9 @@
                 <nuxt-link :to="{ path: 'myCart', query: {book: item}}">Book</nuxt-link>
               </v-col>
             </v-row>
-            <v-row class="mt-2">
-              <v-col cols="12" md="2"></v-col>
-              <v-col cols="12" md="10">
+            <v-row class="mt-2 form-details" align="center" justify="center">
+              <v-col cols="12" md="2" sm="8"></v-col>
+              <v-col cols="12" md="10" sm="16">
                 <v-form>
                   <h3 class="mb-4">Personal Details</h3>
                   <v-text-field dense outlined label="Full Name" class="field-width"></v-text-field>
