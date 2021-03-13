@@ -14,7 +14,7 @@
                         <v-list-item class="mt-5">{{'Quantity: '+bookCount}}</v-list-item>
                       </v-row>
                       <v-row class="d-flex place-order">
-                        <v-btn class="place-order-btn mr-5" @click="CheckoutOrder">Checkout</v-btn>
+                        <v-btn class="check-out-btn" @click="CheckoutOrder">Checkout</v-btn>
                       </v-row>
                     </v-flex>
                   </v-layout>
@@ -53,7 +53,6 @@ export default class OrderSummary extends Vue{
   public CheckoutOrder = () => {
     this.orderedBooks=this.book;
     this.$emit("onCheckOut", this.orderedBooks);
-  //  this.$router.push({path:'/myOrder',query:{orderedBooks: book}});
   }
 }
 </script>

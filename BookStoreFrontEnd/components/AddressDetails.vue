@@ -4,7 +4,7 @@
           <v-card-text>
         <v-row class="mt-5">
             <v-text-field label="Full Name" v-model="fullName" dense outlined  :rules="[rules.required]" class="mr-5 ml-5"></v-text-field>
-            <v-text-field label="Mobile Number" v-model="mobileNumber" dense outlined :rules="[rules.required]" class="mr-5"></v-text-field>
+            <v-text-field label="Mobile Number" v-model="mobileNumber" dense outlined :rules="[rules.required]" class="mr-5 mob-state-field"></v-text-field>
         </v-row>
         <v-row class="ml-2">1.WORK</v-row>
         <v-row class="mt-5">
@@ -12,7 +12,7 @@
         </v-row>
         <v-row class="mt-5">
             <v-text-field label="city/town" v-model="city" dense outlined :rules="[rules.required]" class="mr-5 ml-5"></v-text-field>
-            <v-text-field label="state" v-model="state" dense outlined :rules="[rules.required]" class="mr-5"></v-text-field>
+            <v-text-field label="state" v-model="state" dense outlined :rules="[rules.required]" class="mr-5 mob-state-field"></v-text-field>
         </v-row>
           </v-card-text>
      </v-card>

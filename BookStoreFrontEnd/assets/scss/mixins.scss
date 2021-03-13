@@ -1,0 +1,6 @@
+@import '../variables.scss';
+@mixin place-order-btn-style {
+    color: $whiteColor !important;
+    background-color: $skyBlue !important;
+    width: 150px !important;
+}

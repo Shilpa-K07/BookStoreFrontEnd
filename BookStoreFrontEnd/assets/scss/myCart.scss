@@ -1,11 +1,11 @@
 @import '../variables.scss';
 @import './constants.scss';
+@import './mixins.scss';
 
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
 .cart-card {
-    
     @media screen and (min-width: $small) {
       width: 60% !important;
     }
@@ -67,9 +67,7 @@
     justify-content: flex-end;
 }
 .place-order-btn {
-  color: $whiteColor !important;
-  background-color: $skyBlue !important;
-  width: 150px !important;
+  @include place-order-btn-style;
 }
 .orderConfirmImage {
   height: 120px;
@@ -103,4 +101,30 @@ table tr th {
 }
 .address-form {
   width: $full-width;
+}
+.mob-state-field {
+  @media screen and (min-width: $small) {
+    margin-left: 20px !important;
+  }
+@media screen and (min-width: $medium) {
+  margin-left: 20px !important;
+  }
+  @media screen and (min-width: $large) {
+    margin-left: 0px !important;
+  }
+}
+.check-out-btn {
+  @include place-order-btn-style;
+  @media screen and (min-width: $small) {
+    margin-top: 20px !important;
+    margin-right: 120px !important;
+  }
+  @media screen and (min-width: $medium) {
+  margin-top: 20px !important;
+  margin-right: 120px !important;
+  }
+  @media screen and (min-width: $large) {
+    margin-top: 0px !important;
+    margin-right: 20px !important;
+  }
 }
