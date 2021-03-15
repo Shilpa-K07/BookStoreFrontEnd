@@ -1,16 +1,14 @@
 <template>
   <v-app-bar fixed elevate-on-scroll class="app-bar">
-    <v-col class="d-flex justify-space-around">
-    <v-icon class="ml-4">mdi-book-open-variant</v-icon>
-    <v-toolbar-title>{{title}}</v-toolbar-title>
-    </v-col>
-    <v-col cols="12" md="6">
+    <v-col cols="12" md="8" class="d-flex justify-space-around">
+    <v-icon class="mr-2 book-icon">mdi-book-open-variant</v-icon>
+    <v-toolbar-title class="mt-8">{{title}}</v-toolbar-title>
     <v-text-field
       v-model="searchdata"
       v-click-outside="changeStyle=false"
       label="Search"
       prepend-inner-icon="mdi-magnify"
-      :class="changeStyle ? 'search-text-style' : 'search-text-style-before'"
+      class= "search-text-style"
       solo
       filled
       dense
@@ -23,28 +21,28 @@
       <nuxt-link
           :to="{ path: 'userProfile', query: {wishlistBooks: wishlist, books: items, orderedBooks: orderList }}"
         >
-      <v-icon class="mr-8">mdi-account-outline</v-icon>
+      <v-icon class="mr-8 account-icon">mdi-account-outline</v-icon>
        </nuxt-link>
 
       <v-badge color="#A03037" :content="wishListCount">
         <nuxt-link
           :to="{ path: 'myWishlist', query: {wishlistBooks: wishlist, books: items, orderedBooks: orderList }}"
         >
-          <v-icon class="mr-8">mdi-heart</v-icon>
+          <v-icon class="mr-8 header-icons">mdi-heart</v-icon>
         </nuxt-link>
       </v-badge>
        <v-badge color="#A03037" :content="itemsCount">
       <nuxt-link
         :to="{ path: 'myCart', query: {books: items, wishlistBooks: wishlist, orderedBooks: orderList }}"
       >
-        <v-icon class="mr-8">mdi-cart-outline</v-icon>
+        <v-icon class="mr-8 header-icons">mdi-cart-outline</v-icon>
       </nuxt-link>
       </v-badge>
       <v-badge color="#A03037" :content="orderListCount">
       <nuxt-link
         :to="{ path: 'myOrder', query: {orderedBooks: orderList, wishlistBooks: wishlist, books: items}}"
       >
-        <v-icon class="mr-8">mdi-view-list</v-icon>
+        <v-icon class="mr-8 header-icons">mdi-view-list</v-icon>
       </nuxt-link>
        </v-badge>
     </v-col>

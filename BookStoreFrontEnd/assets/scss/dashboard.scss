@@ -7,9 +7,23 @@
     height: 100%;
     width: $full-width;
 }
-.search-text-style.v-text-field.v-text-field--solo:not(.v-text-field--solo-flat) > .v-input__control > .v-input__slot {
+/* .search-text-style.v-text-field.v-text-field--solo:not(.v-text-field--solo-flat) > .v-input__control > .v-input__slot {
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
     background-color: $whiteColor;
+} */
+.search-text-style {
+    @media screen and (min-width: $small) {
+        margin-right: 135px !important;
+    margin-left: -95px !important;
+      }
+      @media screen and (min-width: $medium) {
+        margin-right: 135px !important;
+    margin-left: -95px !important;
+      }
+      @media screen and (min-width: $large) {
+        margin-right: 0px !important;
+    margin-left: 0px !important;
+      }
 }
 .v-toolbar__content, .v-toolbar__extension {
     background-color: $darkGrey;
@@ -48,6 +62,39 @@
 .appbar-icons .v-application .primary {
     background-color: none !important;
 }
+.appbar-icons {
+    @media screen and (min-width: $small) {
+        margin-left: -140px !important;
+      }
+    @media screen and (min-width: $medium) {
+        margin-left: -140px !important;
+      }
+      @media screen and (min-width: $large) {
+        margin-left: 0px !important;
+      }
+}
+.header-icons {
+    @media screen and (min-width: $small) {
+        margin-left: -20px !important;
+      }
+    @media screen and (min-width: $medium) {
+        margin-left: -20px !important;
+      }
+      @media screen and (min-width: $large) {
+        margin-left: 0px !important;
+      }
+}
+.account-icon {
+    @media screen and (min-width: $small) {
+        margin-left: -5px !important;
+      }
+    @media screen and (min-width: $medium) {
+        margin-left: -5px !important;
+      }
+      @media screen and (min-width: $large) {
+        margin-left: 0px !important;
+      }
+}
 .v-badge__badge {
     background-color: none !important;
 }
@@ -85,3 +132,14 @@
         margin-left: 0px !important;
       }
 }
+.book-icon {
+    @media screen and (min-width: $small) {
+      margin-left: -30px !important;
+    }
+    @media screen and (min-width: $medium) {
+      margin-left: -30px !important;
+    }
+    @media screen and (min-width: $large) {
+      margin-left: 0px !important;
+    }
+  }
