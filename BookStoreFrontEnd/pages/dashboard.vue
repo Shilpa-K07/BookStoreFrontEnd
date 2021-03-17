@@ -107,5 +107,5 @@ export default class Dashboard extends Vue {
 <style lang="scss">
 @import url("../assets/scss/dashboard.scss");
 </style>
-            
+        
    

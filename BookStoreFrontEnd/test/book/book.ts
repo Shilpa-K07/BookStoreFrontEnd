@@ -21,7 +21,6 @@ describe('Book', () => {
     it('check if prevPage event emits', () => {
         wrapper.vm.$emit('prevPage')
        expect(wrapper.emitted().prevPage).toBeTruthy()
-      
     })
 
     it('check if text Next Page >> renders', () => {
