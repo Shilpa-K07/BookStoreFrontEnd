@@ -10,7 +10,15 @@ let wrapper: any
 beforeEach(() => {
     const localVue = createLocalVue()
     localVue.use(Vuetify)
-    wrapper = shallowMount(addToBag, {
+ /*    const beforeMount = jest.fn();
+    const mounted = jest.fn(); */
+    const beforeMount = () => {
+        console.log('mock beforeMount');
+      };
+    const mounted = () => {
+        console.log('mock mounted');
+      };
+    wrapper = shallowMount(addToBag, {methods:{beforeMount, mounted},
         localVue,
     })
 })
